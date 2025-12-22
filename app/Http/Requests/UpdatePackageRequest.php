@@ -11,7 +11,7 @@ class UpdatePackageRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -21,8 +21,30 @@ class UpdatePackageRequest extends FormRequest
      */
     public function rules(): array
     {
+        $id = $this->route('package') ? $this->route('package')->id : null;
+
         return [
-            //
+            'name' => 'required|string|max:255|unique:packages,name,' . $id,
+            'duration_days' => 'required|integer|min:1',
+            'price' => 'required|numeric|min:0',
+            'specifications' => 'nullable|array',
+            'specifications.data.per_month' => 'nullable|string',
+            'specifications.data.per_day' => 'nullable|string',
+            'specifications.data.note' => 'nullable|string',
+            'specifications.call' => 'nullable|string',
+        ];
+    }
+
+    public function messages(): array
+    {
+        return [
+            'name.required' => 'Tên gói cước không được để trống.',
+            'name.unique' => 'Tên gói cước này đã tồn tại.',
+            'duration_days.required' => 'Thời hạn sử dụng không được để trống.',
+            'duration_days.integer' => 'Thời hạn phải là số nguyên.',
+            'price.required' => 'Giá cước không được để trống.',
+            'price.numeric' => 'Giá cước phải là định dạng số.',
+            'specifications.array' => 'Thông số kỹ thuật phải là một mảng dữ liệu.',
         ];
     }
 }

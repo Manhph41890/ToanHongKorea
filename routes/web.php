@@ -1,12 +1,40 @@
 <?php
 
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\PackageController;
+use App\Http\Controllers\PhoneController;
+use App\Http\Controllers\SimController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('home');
 });
 
+Route::prefix('admin')->name('admin.')->group(function () {
+    Route::get('/trash', [PhoneController::class, 'trash'])->name('phones.trash');
 
-// Test dữ liệu bảng categories
-Route::resource('categories', CategoryController::class);
+    // Khôi phục
+    Route::patch('/{id}/restore', [PhoneController::class, 'restore'])->name('phones.restore');
+
+    // Xóa vĩnh viễn
+    Route::delete('/{id}/force-delete', [PhoneController::class, 'forceDelete'])->name('phones.forceDelete');
+    Route::resource('categories', CategoryController::class)->names('categories');
+    Route::resource('phones', PhoneController::class)->names('phones');
+
+    // Các route cho thùng rác phải đặt TRƯỚC resource
+    Route::get('packages/trash', [PackageController::class, 'trash'])->name('packages.trash');
+    Route::patch('packages/{id}/restore', [PackageController::class, 'restore'])->name('packages.restore');
+    Route::delete('packages/{id}/force-delete', [PackageController::class, 'forceDelete'])->name('packages.forceDelete');
+
+    // Route Resource chuẩn
+    Route::resource('packages', PackageController::class);
+
+    // Thùng rác SIM
+    Route::get('sims/trash', [SimController::class, 'trash'])->name('sims.trash');
+    Route::patch('sims/{id}/restore', [SimController::class, 'restore'])->name('sims.restore');
+    Route::delete('sims/{id}/force-delete', [SimController::class, 'forceDelete'])->name('sims.forceDelete');
+
+    // CRUD Resource
+    Route::resource('sims', SimController::class);
+});
+
