@@ -58,7 +58,7 @@
                         <option value="">Chọn danh mục</option>
                         @foreach ($categories as $category)
                             <option value="{{ $category->id }}"
-                                {{ (old('category_id', $phone->category_id) == $category->id) ? 'selected' : '' }}>
+                                {{ old('category_id', $phone->categories_id) == $category->id ? 'selected' : '' }}>
                                 {{ $category->name }}
                             </option>
                         @endforeach
@@ -70,10 +70,6 @@
                     <textarea class="form-control" id="short_description" name="short_description" rows="3">{{ old('short_description', $phone->short_description) }}</textarea>
                 </div>
 
-                <div class="mb-3">
-                    <label for="description" class="form-label">Mô tả chi tiết</label>
-                    <textarea class="form-control" id="description" name="description" rows="5">{{ old('description', $phone->description) }}</textarea>
-                </div>
 
                 <div class="mb-3">
                     <label for="main_image" class="form-label">Ảnh chính sản phẩm</label>
@@ -89,7 +85,8 @@
                         </div>
                     @endif
                     <input type="file" class="form-control" id="main_image" name="main_image" accept="image/*">
-                    <small class="form-text text-muted">Kích thước tối đa 2MB. Định dạng: JPG, PNG, GIF. (Chọn ảnh mới sẽ thay thế ảnh cũ)</small>
+                    <small class="form-text text-muted">Kích thước tối đa 2MB. Định dạng: JPG, PNG, GIF. (Chọn ảnh mới sẽ
+                        thay thế ảnh cũ)</small>
                 </div>
 
                 <hr>
@@ -126,8 +123,8 @@
                                     <input type="checkbox" class="form-check-input"
                                         id="existing_other_images_{{ $image->id }}" name="existing_other_images[]"
                                         value="{{ $image->id }}" checked>
-                                    <label class="form-check-label"
-                                        for="existing_other_images_{{ $image->id }}">Giữ lại</label>
+                                    <label class="form-check-label" for="existing_other_images_{{ $image->id }}">Giữ
+                                        lại</label>
                                 </div>
                                 <button type="button" class="btn btn-danger btn-sm mt-1 delete-existing-other-image"
                                     data-image-id="{{ $image->id }}">Xóa</button>
@@ -197,7 +194,6 @@
 
             // Nếu có lỗi validation và dữ liệu cũ từ old(), cần tải lại form với dữ liệu cũ
             @if (old('variants'))
-                
             @endif
         });
     </script>
