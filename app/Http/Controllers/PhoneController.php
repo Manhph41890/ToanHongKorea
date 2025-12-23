@@ -165,13 +165,15 @@ class PhoneController extends Controller
      */
     public function show(Phone $phone)
     {
-        $phone->load('category', 'variants.size', 'variants.color', 'images');
+        // Đảm bảo load đầy đủ các quan hệ
+        $phone->load(['category', 'variants.size', 'variants.color', 'images']);
 
         if (request()->ajax()) {
+            // Trả về view partial cho AJAX
             return view('admin.phones.show_modal_content', compact('phone'));
         }
 
-        return redirect()->route('admin.phones.index')->with('info', 'Trang chi tiết sản phẩm không được hỗ trợ trực tiếp. Vui lòng sử dụng chức năng xem chi tiết');
+        return redirect()->route('admin.phones.index');
     }
 
     /**
@@ -402,3 +404,4 @@ class PhoneController extends Controller
         }
     }
 }
+    
