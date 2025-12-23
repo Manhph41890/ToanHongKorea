@@ -15,14 +15,14 @@ class Variant extends Model
         'color_id',
         'size_id',
         'price',
-        'quantity',
+        'stock',
         'battery_health',
         'status',
     ];
 
     protected $casts = [
         'price' => 'decimal:2',
-        'quantity' => 'integer',
+        'stock' => 'integer',
         'battery_health' => 'integer',
         'phone_id' => 'integer',
         'color_id' => 'integer',
@@ -66,6 +66,6 @@ class Variant extends Model
      */
     public function scopeInStock($query)
     {
-        return $query->where('quantity', '>', 0)->where('status', 'còn_hàng');
+        return $query->where('stock', '>', 0)->where('status', 'còn_hàng');
     }
 }

@@ -53,12 +53,12 @@
                 </div>
 
                 <div class="mb-3">
-                    <label for="category_id" class="form-label">Danh mục <span class="text-danger">*</span></label>
-                    <select class="form-control" id="category_id" name="category_id" required>
+                    <label for="categories_id" class="form-label">Danh mục <span class="text-danger">*</span></label>
+                    <select class="form-control" id="categories_id" name="categories_id" required>
                         <option value="">Chọn danh mục</option>
                         @foreach ($categories as $category)
                             <option value="{{ $category->id }}"
-                                {{ old('category_id', $phone->categories_id) == $category->id ? 'selected' : '' }}>
+                                {{ old('categories_id', $phone->categories_id) == $category->id ? 'selected' : '' }}>
                                 {{ $category->name }}
                             </option>
                         @endforeach
