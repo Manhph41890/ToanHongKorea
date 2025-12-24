@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\PackageController;
 use App\Http\Controllers\PhoneController;
@@ -39,10 +40,20 @@ Route::prefix('admin')->name('admin.')->group(function () {
 
     // Các route cho thùng rác phải đặt TRƯỚC resource
     Route::get('packages/trash', [PackageController::class, 'trash'])->name('packages.trash');
-    Route::patch('packages/{id}/restore', [PackageController::class, 'restore'])->name('packages.restore');
+    Route::post('packages/{id}/restore', [PackageController::class, 'restore'])->name('packages.restore');
     Route::delete('packages/{id}/force-delete', [PackageController::class, 'forceDelete'])->name('packages.forceDelete');
-
 
     // Route Resource chuẩn
     Route::resource('packages', PackageController::class);
+});
+
+// Hiển thị form đăng nhập
+    Route::get('login', [AuthController::class, 'showLoginForm'])->name('login');
+    Route::post('login', [AuthController::class, 'login']);
+    Route::get('register', [AuthController::class, 'showRegistrationForm'])->name('register');
+    Route::post('register', [AuthController::class, 'register']);
+    Route::post('logout', [AuthController::class, 'logout'])->name('logout');
+
+Route::get('/header', function () {
+    return view('client.partials.header');
 });
