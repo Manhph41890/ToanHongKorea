@@ -1,4 +1,4 @@
-@extends('client.layouts.auth')
+@extends('auth.auth')
 
 @section('title', 'Đăng nhập')
 
@@ -48,13 +48,15 @@
     </div>
 
     <!-- Cột Ảnh -->
-    <div class="auth-image-column">
-        {{-- Thay thế ảnh minh họa bằng ảnh nội thất sang trọng --}}
-        <img src="{{ asset('logo/logo_remove.png') }}" alt="ToanHongKorea Interior">
-        <h3>Kết nối thông minh cho cuộc sống số</h3>
-        <p>Giải pháp trọn gói từ điện thoại, sim đến gói cước – đơn giản, nhanh gọn, tiết kiệm chi phí.</p>
 
-    </div>
+    {{-- Nếu KHÔNG PHẢI mobile (tức là desktop) thì mới hiển thị --}}
+    @if (!$isMobile)
+        <div class="auth-image-column">
+            <img src="{{ asset('logo/logo_remove.png') }}" alt="ToanHongKorea Interior">
+            <h3>Kết nối thông minh cho cuộc sống số</h3>
+            <p>Giải pháp trọn gói từ điện thoại, sim đến gói cước – đơn giản, nhanh gọn, tiết kiệm chi phí.</p>
+        </div>
+    @endif
 @endsection
 
 @push('scripts')

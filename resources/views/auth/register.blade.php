@@ -1,4 +1,4 @@
-@extends('client.layouts.auth')
+@extends('auth.auth')
 
 @section('title', 'Đăng ký tài khoản')
 

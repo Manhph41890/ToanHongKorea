@@ -27,7 +27,7 @@
 }
 
 .logo img {
-    height: 50px; /* Điều chỉnh tùy theo ảnh thật */
+    height: 60px; /* Điều chỉnh tùy theo ảnh thật */
 }
 
 .search-box {
@@ -100,18 +100,18 @@
     display: flex;
     align-items: center;
     gap: 8px;
-    font-size: 15px;
+    font-size: 20px;
 }
 
 .nav-icon_apple {
-    height: 18px;
+    height: 20px;
     object-fit: contain;
 }
 
 .nav-icon_samsung {
-    height: 11px;
+    height: 14px;
     object-fit: contain;
-    margin-top: 5px;
+    margin-top: 8px;
 }
 
 .arrow-icon {
@@ -180,4 +180,251 @@
 @keyframes fadeIn {
     from { opacity: 0; transform: translateY(5px); }
     to { opacity: 1; transform: translateY(0); }
+}
+
+
+/* =================================================footer============================================================ */
+
+.footer {
+    background-color: #1a1a1a;
+    color: #ffffff;
+    padding: 60px 0 20px;
+    font-family: 'Arial', sans-serif;
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 20px;
+}
+
+.footer-col {
+    flex: 1;
+    margin-right: 30px;
+}
+
+.footer-col:last-child {
+    margin-right: 0;
+}
+
+.footer-logo img {
+    height: 80px; /* Tùy chỉnh kích thước logo */
+    margin-bottom: 20px;
+}
+
+.footer-desc {
+    font-size: 14px;
+    line-height: 1.6;
+    color: #cccccc;
+    margin-bottom: 20px;
+}
+
+.footer-title {
+    font-size: 18px;
+    font-weight: bold;
+    color: #d4af37; /* Màu vàng Gold */
+    margin-bottom: 25px;
+    position: relative;
+    padding-bottom: 10px;
+}
+
+.footer-title::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 50px;
+    height: 2px;
+    background-color: #d4af37;
+}
+
+.footer-links, .footer-contact {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-links li, .footer-contact li {
+    margin-bottom: 12px;
+    display: flex;
+    align-items: flex-start;
+}
+
+.footer-links li a {
+    color: #cccccc;
+    text-decoration: none;
+    font-size: 14px;
+    transition: color 0.3s;
+}
+
+.footer-links li a:hover {
+    color: #d4af37;
+}
+
+.footer-contact li i {
+    color: #d4af37;
+    margin-right: 12px;
+    margin-top: 4px;
+}
+
+.footer-contact li span {
+    font-size: 14px;
+    color: #cccccc;
+}
+
+.social-links a {
+    display: inline-block;
+    width: 35px;
+    height: 35px;
+    border: 1px solid #ffffff;
+    border-radius: 50%;
+    color: #ffffff;
+    text-align: center;
+    line-height: 35px;
+    margin-right: 10px;
+    transition: all 0.3s;
+}
+
+.social-links a:hover {
+    background-color: #d4af37;
+    border-color: #d4af37;
+    color: #000;
+}
+
+.payment-methods {
+    margin-top: 20px;
+    opacity: 0.7;
+}
+
+.footer-bottom {
+    border-top: 1px solid #333;
+    margin-top: 40px;
+    padding-top: 20px;
+    text-align: center;
+    font-size: 13px;
+    color: #777;
+}
+.iconfy{
+    margin-top: 8px;
+}
+
+
+/* ===================================================slide banner=============================================== */
+
+/* Container chung */
+.container {
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+.banner-section {
+    padding: 20px 0;
+    background-color: #fff;
+}
+
+/* Layout Banner Top */
+.banner-top-layout {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 25px;
+}
+
+.main-slider {
+    flex: 3; /* Chiếm 75% */
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.main-slider img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.side-banner {
+    flex: 1; /* Chiếm 25% */
+}
+
+.side-banner img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+/* Layout Hot Products Grid */
+.hot-products-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.product-hot-card {
+    position: relative;
+    border: 1px solid #e0e0e0;
+    border-radius: 4px;
+    padding: 20px;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+}
+
+.product-hot-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+}
+
+/* Nhãn HOT màu đỏ chéo góc */
+.hot-label {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: #C10000;
+    color: white;
+    padding: 5px 25px;
+    font-size: 12px;
+    font-weight: bold;
+    transform: rotate(-45deg) translate(-20px, -5px);
+    z-index: 1;
+}
+
+/* Nội dung sản phẩm bên trong card */
+.product-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+}
+
+.product-img {
+    flex: 1;
+}
+
+.product-img img {
+    max-width: 100%;
+    height: auto;
+    object-fit: contain;
+}
+
+.product-info {
+    flex: 1;
+    text-align: right;
+}
+
+.product-info h3 {
+    font-size: 22px;
+    font-weight: 800;
+    margin: 0 0 10px 0;
+    line-height: 1.2;
+    color: #000;
+}
+
+.product-info .price {
+    font-size: 20px;
+    color: #C10000;
+    font-weight: bold;
+    margin: 0;
 }

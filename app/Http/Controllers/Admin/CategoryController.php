@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use RealRashid\SweetAlert\Facades\Alert;
@@ -130,7 +131,7 @@ class CategoryController extends Controller
         $category = Category::onlyTrashed()->findOrFail($id);
         $category->restore();
         Alert::success('Thành công', 'Danh mục đã được khôi phục thành công!');
-        return redirect()->route('admin.categories.trash');
+        return redirect()->route('admin..trash');
     }
 
     /**
