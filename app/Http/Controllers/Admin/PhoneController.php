@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
 use App\Models\Phone;
 use App\Models\Category; // Đảm bảo import Category model
 use Illuminate\Http\Request;

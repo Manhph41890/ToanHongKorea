@@ -1,11 +1,12 @@
 <?php
 
+use App\Http\Controllers\Admin\AccountController;
 use App\Http\Controllers\AuthController;
-use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Client\HomeController;
-use App\Http\Controllers\PackageController;
-use App\Http\Controllers\PhoneController;
-use App\Http\Controllers\SimController;
+use App\Http\Controllers\Admin\PackageController;
+use App\Http\Controllers\Admin\PhoneController;
+use App\Http\Controllers\Admin\SimController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
@@ -44,14 +45,20 @@ Route::prefix('admin')->name('admin.')->group(function () {
 
     // Route Resource chuẩn
     Route::resource('packages', PackageController::class);
+
+    Route::get('users', [AccountController::class, 'indexUsers'])->name('accounts.users.index');
+    Route::patch('accounts/{account}/toggle-status', [AccountController::class, 'toggleStatus'])->name('accounts.toggleStatus');
+    Route::resource('accounts', AccountController::class);
+
+
 });
 
 // Hiển thị form đăng nhập
-    Route::get('login', [AuthController::class, 'showLoginForm'])->name('login');
-    Route::post('login', [AuthController::class, 'login']);
-    Route::get('register', [AuthController::class, 'showRegistrationForm'])->name('register');
-    Route::post('register', [AuthController::class, 'register']);
-    Route::post('logout', [AuthController::class, 'logout'])->name('logout');
+Route::get('login', [AuthController::class, 'showLoginForm'])->name('login');
+Route::post('login', [AuthController::class, 'login']);
+Route::get('register', [AuthController::class, 'showRegistrationForm'])->name('register');
+Route::post('register', [AuthController::class, 'register']);
+Route::post('logout', [AuthController::class, 'logout'])->name('logout');
 
 Route::get('/header', function () {
     return view('client.desktop.partials.header');

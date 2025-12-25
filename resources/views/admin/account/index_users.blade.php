@@ -111,7 +111,7 @@
                                         <i class="fas fa-eye"></i>
                                     </button>
 
-                                    <form action="{{ route('accounts.toggleStatus', $user->id) }}" method="POST"
+                                    <form action="{{ route('admin.accounts.toggleStatus', $user->id) }}" method="POST"
                                         class="d-inline-block">
                                         @csrf
                                         @method('PATCH')

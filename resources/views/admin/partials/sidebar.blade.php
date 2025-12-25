@@ -55,7 +55,7 @@
         </div>
     </li>
 
-        <!-- Nav Item - Quản lý Gói Cước -->
+    <!-- Nav Item - Quản lý Gói Cước -->
     <li class="nav-item {{ Request::is('admin/packages*') ? 'active' : '' }}">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsepackages"
             aria-expanded="true" aria-controls="collapsepackages">
@@ -80,7 +80,7 @@
     </div>
 
     <!-- Nav Item - Quản lý Tài khoản -->
-    {{-- <li class="nav-item {{ Request::is('admin/accounts*') || Request::is('admin/users*') ? 'active' : '' }}">
+    <li class="nav-item {{ Request::is('admin/accounts*') || Request::is('admin/users*') ? 'active' : '' }}">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseAccounts"
             aria-expanded="true" aria-controls="collapseAccounts">
             <i class="fas fa-fw fa-users-cog"></i>
@@ -90,11 +90,15 @@
             class="collapse {{ Request::is('admin/accounts*') || Request::is('admin/users*') ? 'show' : '' }}"
             aria-labelledby="headingAccounts" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
+                <a class="collapse-item {{ Request::is('admin/accounts') && !request()->routeIs('admin.accounts.users.index') ? 'active' : '' }}"
+                    href="{{ route('admin.accounts.index') }}">Tài khoản Nhân viên</a>
                 <a class="collapse-item {{ request()->routeIs('admin.accounts.users.index') ? 'active' : '' }}"
                     href="{{ route('admin.accounts.users.index') }}">Tài khoản Người dùng</a>
+                <a class="collapse-item {{ Request::is('admin/accounts/create') ? 'active' : '' }}"
+                    href="{{ route('admin.accounts.create') }}">Thêm nhân viên</a>
             </div>
         </div>
-    </li> --}}
+    </li>
 
     {{-- Menu đơn hàng --}}
     <!-- Divider -->
