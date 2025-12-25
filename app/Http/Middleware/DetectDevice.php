@@ -19,23 +19,21 @@ class DetectDevice
     {
         $agent = new Agent();
 
-        // Kiểm tra nếu không phải là request vào trang admin thì mới xử lý chia giao diện
-        if (!$request->is('admin*')) {
+        // Mặc định giả định là Desktop
+        $isMobile = false;
 
-            if ($agent->isMobile() && !$agent->isTablet()) {
-                // SỬA TẠI ĐÂY: Truy cập vào Finder để prepend đường dẫn
+        if (!$request->is('admin*')) {
+            // Kiểm tra xem là Mobile thật hoặc đang dùng mode dev=mobile
+            if (($agent->isMobile() && !$agent->isTablet()) || ($request->dev == 'mobile')) {
+                $isMobile = true;
                 view()->getFinder()->prependLocation(resource_path('views/client/mobile'));
             } else {
-                // SỬA TẠI ĐÂY: Dùng cho desktop
                 view()->getFinder()->prependLocation(resource_path('views/client/desktop'));
             }
         }
-        // Nếu trên trình duyệt máy tính bạn gõ thêm ?dev=mobile (ví dụ: localhost/?dev=mobile)
-        // thì nó sẽ ép hiện giao diện mobile để bạn thiết kế cho tiện.
-        if ($request->has('dev') && $request->dev == 'mobile') {
-            view()->getFinder()->prependLocation(resource_path('views/client/mobile'));
-            return $next($request);
-        }
+
+        // CHIA SẺ BIẾN NÀY VỚI TẤT CẢ FILE BLADE
+        view()->share('isMobile', $isMobile);
 
         return $next($request);
     }

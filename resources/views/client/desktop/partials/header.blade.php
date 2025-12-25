@@ -91,14 +91,20 @@
                 </li>
 
                 <!-- Menu Samsung -->
+
                 <li class="has-dropdown">
                     <a href="/samsung">
                         <img src="{{ asset('logo/logo_samsung.png') }}" alt="Samsung" class="nav-icon_samsung"> <i
                             class="fa-solid fa-chevron-right arrow-icon" style="margin-top: 6px"></i>
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a href="/galaxy-s">Galaxy S Series</a></li>
-                        <li><a href="/galaxy-z">Galaxy Z (Fold & Flip)</a></li>
+                        <li class="has-submenu">
+                            <a href="/galaxy-s">Galaxy S Series <i class="fa-solid fa-chevron-right"></i></a>
+                            <ul class="submenu">
+                                <li><a href="/iphone-11">Galaxy S24 Ultra</a></li>
+                                <li><a href="/iphone-11-pro">Galaxy S21</a></li>
+                            </ul>
+                        </li>
                     </ul>
                 </li>
 
