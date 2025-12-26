@@ -1,59 +1,62 @@
 <section class="featured-products">
     <div class="container">
         <!-- Header: Tiêu đề và Điều hướng -->
-        <div class="d-flex justify-content-center align-items-end mb-4">
-            <div class="section-title-wrapper">
-                <h2 class="section-title">SẢN PHẨM NỔI BẬT</h2>
+        <div class="products-content-wrapper shadow-sm">
+            <div class="d-flex justify-content-between align-items-end mb-4">
+                <div class="section-title-wrapper">
+                    <h2 class="section-title">SẢN PHẨM NỔI BẬT</h2>
+                    <div class="title-underline"></div>
+                </div>
+
+                <!-- Điều hướng (Dành cho Slider sau này) -->
+                <div class="product-nav d-none d-md-flex">
+                    <button class="nav-btn"><i class="fa-solid fa-chevron-left"></i></button>
+                    <div class="page-indicator"><span>1</span> / 2</div>
+                    <button class="nav-btn"><i class="fa-solid fa-chevron-right"></i></button>
+                </div>
             </div>
 
-            <!-- Điều hướng (Dành cho Slider sau này) -->
+            <!-- Danh sách sản phẩm -->
+            <div class="row g-4">
+                <!-- Bắt đầu lặp sản phẩm (Mẫu 1 Card) -->
+                @for ($i = 1; $i <= 5; $i++)
+                    <div class="col-6 col-md-4 col-lg-2-4"> <!-- 5 cột trên desktop, 2 cột trên mobile -->
+                        <div class="product-card">
+                            <!-- Nhãn (Badge) -->
+                            <div class="product-badge">New</div>
 
-        </div>
-        <div class="product-nav d-none d-md-flex mb-3 d-flex justify-content-end">
-            <button class="nav-btn"><i class="fa-solid fa-chevron-left"></i></button>
-            <div class="page-indicator"><span>1</span> / 2</div>
-            <button class="nav-btn"><i class="fa-solid fa-chevron-right"></i></button>
-        </div>
-        <!-- Danh sách sản phẩm -->
-        <div class="row g-4">
-            <!-- Bắt đầu lặp sản phẩm (Mẫu 1 Card) -->
-            @for ($i = 1; $i <= 5; $i++)
-                <div class="col-6 col-md-4 col-lg-2-4"> <!-- 5 cột trên desktop, 2 cột trên mobile -->
-                    <div class="product-card">
-                        <!-- Nhãn (Badge) -->
-                        <div class="product-badge">New</div>
-
-                        <!-- Hình ảnh -->
-                        <div class="product-image">
-                            <img src="{{ asset('images/13pro.png') }}" alt="iPhone 13 Pro">
-                        </div>
-
-                        <!-- Thông tin -->
-                        <div class="product-content">
-                            <h3 class="product-name">iPhone 13 Pro 256GB</h3>
-                            <div class="product-price">759,000 <span class="currency">won</span></div>
-
-                            <!-- Đánh giá -->
-                            <div class="product-rating">
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
-                                <span class="rating-count">(12)</span>
+                            <!-- Hình ảnh -->
+                            <div class="product-image">
+                                <img src="{{ asset('images/13pro.png') }}" alt="iPhone 13 Pro">
                             </div>
 
-                            <!-- Nhóm nút bấm -->
-                            <div class="product-actions">
-                                <a href="https://m.me/yourpage" target="_blank" class="btn-messenger">
-                                    <i class="fa-brands fa-facebook-messenger"></i> MUA NGAY
-                                </a>
-                                <a href="#" class="btn-detail">CHI TIẾT</a>
+                            <!-- Thông tin -->
+                            <div class="product-content">
+                                <h3 class="product-name">iPhone 13 Pro 256GB</h3>
+                                <div class="product-price">759,000 <span class="currency">won</span></div>
+
+                                <!-- Đánh giá -->
+                                <div class="product-rating">
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <span class="rating-count">(12)</span>
+                                </div>
+
+                                <!-- Nhóm nút bấm -->
+                                <div class="product-actions">
+                                    <a href="https://m.me/yourpage" target="_blank" class="btn-messenger">
+                                        <i class="fa-brands fa-facebook-messenger"></i> MUA NGAY
+                                    </a>
+                                    <a href="#" class="btn-detail">CHI TIẾT</a>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            @endfor
+                @endfor
+            </div>
         </div>
     </div>
 </section>
@@ -66,6 +69,20 @@
             --primary-red: #e01020;
             --text-dark: #1a1a1a;
             --bg-light: #f8f9fa;
+        }
+
+        /* Lớp bọc ngoài cùng */
+        .featured-products-section {
+            padding: 80px 0;
+            background-color: var(--bg-light);
+        }
+
+        /* Lớp bọc nội dung chính (Box trắng) */
+        .products-content-wrapper {
+            background-color: #f4f4f4;
+            padding: 40px;
+            border-radius: 20px;
+            border: 1px solid rgba(0, 0, 0, 0.05);
         }
 
         .featured-products {
@@ -167,7 +184,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            border: 1px #ffffffda solid;
+            border: 1px #ffffff solid;
             border-radius: 5px;
             background: rgba(255, 255, 255, 0.1);
             backdrop-filter: blur(0.5px);
