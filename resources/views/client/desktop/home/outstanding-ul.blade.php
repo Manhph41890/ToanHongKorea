@@ -1,99 +1,48 @@
 <section class="featured-products">
     <div class="container">
-        <!-- Header: Tiêu đề và Điều hướng -->
-        <div class="products-content-wrapper shadow-sm">
-            <div class="d-flex justify-content-between align-items-end mb-4">
+        <div class="products-content-wrapper shadow-sm"
+            style="background: linear-gradient(180deg, #f9f8f8 0%, #ededee 100%);">
+
+            <!-- Header -->
+            <div class="d-flex justify-content-left align-items-center mb-4">
                 <div class="section-title-wrapper">
-                    <h2 class="section-title" style="color: #1E293C">SAMSUNG CHÍNH HÃNG</h2>
+                    <h2 class="section-title" style="color: #1E293C; margin-bottom: 0;">SAMSUNG CHÍNH HÃNG</h2>
                     <div class="title-underline"></div>
                 </div>
-
-                <div class="category-tabs">
+                <div class="category-tabs" style="max-width: 700px; margin-left: 50px;">
                     <a href="#" class="tab-item active">Nổi bật</a>
                     <a href="#" class="tab-item">Iphone 17 pro</a>
-                    <a href="#" class="tab-item">Máy lạnh</a>
-                    <a href="#" class="tab-item">Quạt</a>
-                    <a href="#" class="tab-item">Tủ lạnh</a>
-                    <a href="#" class="tab-item">Máy giặt</a>
-                </div>
-                <!-- Điều hướng (Dành cho Slider sau này) -->
-                <div class="product-nav d-none d-md-flex">
-                    <button class="nav-btn"><i class="fa-solid fa-chevron-left"></i></button>
-                    <div class="page-indicator"><span>1</span> / 2</div>
-                    <button class="nav-btn"><i class="fa-solid fa-chevron-right"></i></button>
+                    <a href="#" class="tab-item">Iphone 16 pro max</a>
+                    <a href="#" class="tab-item">Iphone 16 pro</a>
+                    <a href="#" class="tab-item">Iphone 15</a>
+                    <a href="#" class="tab-item">Iphone 14 pro</a>
+                    <a href="#" class="tab-item">Iphone 13</a>
                 </div>
             </div>
 
-            <!-- Danh sách sản phẩm -->
+            <!-- Danh sách sản phẩm: Sửa thành col-lg-3 để có 4 cái/hàng -->
             <div class="row g-4">
-                <!-- Bắt đầu lặp sản phẩm (Mẫu 1 Card) -->
-                @for ($i = 1; $i <= 5; $i++)
-                    <div class="col-6 col-md-4 col-lg-2-4"> <!-- 5 cột trên desktop, 2 cột trên mobile -->
+                @for ($i = 1; $i <= 8; $i++)
+                    {{-- Test 8 cái để thấy 2 hàng, mỗi hàng 4 cái --}}
+                    <div class="col-6 col-md-4 col-lg-3">
                         <div class="product-card">
-                            <!-- Nhãn (Badge) -->
-                            <div class="product-badge">New</div>
-
-                            <!-- Hình ảnh -->
+                            <div class="product-badge"><button class="spc-heart-btn" title="Thêm vào yêu thích">
+                                    <i class="fa-regular fa-heart"></i>
+                                </button></div>
                             <div class="product-image">
                                 <img src="{{ asset('images/13pro.png') }}" alt="iPhone 13 Pro">
                             </div>
-
-                            <!-- Thông tin -->
                             <div class="product-content">
                                 <h3 class="product-name">iPhone 13 Pro 256GB</h3>
                                 <div class="product-price">759,000 <span class="currency">won</span></div>
-
-                                <!-- Đánh giá -->
                                 <div class="product-rating">
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                        class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                        class="fa-solid fa-star"></i>
                                     <span class="rating-count">(12)</span>
                                 </div>
-                                
-
-                                <!-- Nhóm nút bấm -->
                                 <div class="product-actions">
-                                    <a href="https://m.me/yourpage" target="_blank" class="btn-messenger">
-                                        <i class="fa-brands fa-facebook-messenger"></i> MUA NGAY
-                                    </a>
-                                    <a href="#" class="btn-detail">CHI TIẾT</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                @endfor
-                @for ($i = 1; $i <= 5; $i++)
-                    <div class="col-6 col-md-4 col-lg-2-4"> <!-- 5 cột trên desktop, 2 cột trên mobile -->
-                        <div class="product-card">
-                            <!-- Nhãn (Badge) -->
-                            <div class="product-badge">New</div>
-
-                            <!-- Hình ảnh -->
-                            <div class="product-image">
-                                <img src="{{ asset('images/13pro.png') }}" alt="iPhone 13 Pro">
-                            </div>
-
-                            <!-- Thông tin -->
-                            <div class="product-content">
-                                <h3 class="product-name">iPhone 13 Pro 256GB</h3>
-                                <div class="product-price">759,000 <span class="currency">won</span></div>
-
-                                <!-- Đánh giá -->
-                                <div class="product-rating">
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                    <span class="rating-count">(12)</span>
-                                </div>
-
-                                <!-- Nhóm nút bấm -->
-                                <div class="product-actions">
-                                    <a href="https://m.me/yourpage" target="_blank" class="btn-messenger">
+                                    <a href="#" target="_blank" class="btn-messenger">
                                         <i class="fa-brands fa-facebook-messenger"></i> MUA NGAY
                                     </a>
                                     <a href="#" class="btn-detail">CHI TIẾT</a>
@@ -109,6 +58,47 @@
 
 @push('styles')
     <style>
+        /* Tabs */
+        .category-tabs {
+            display: flex;
+            gap: 8px;
+            overflow-x: auto;
+            /* Giảm padding để không bị trống quá nhiều */
+            padding-bottom: 8px;
+            margin-bottom: 0px;
+            /* Cho phép cuộn mượt trên điện thoại */
+            -webkit-overflow-scrolling: touch;
+        }
+
+        /* Tùy chỉnh thanh cuộn cho Chrome, Safari, Edge */
+        .category-tabs::-webkit-scrollbar {
+            height: 4px;
+            /* Độ cao thanh cuộn cực mỏng */
+        }
+
+        .category-tabs::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            /* Màu nền đường ray */
+            border-radius: 10px;
+        }
+
+        .category-tabs::-webkit-scrollbar-thumb {
+            background: #ccc;
+            /* Màu của thanh kéo */
+            border-radius: 10px;
+        }
+
+        .category-tabs::-webkit-scrollbar-thumb:hover {
+            background: #999;
+            /* Màu khi di chuột vào */
+        }
+
+        /* Ẩn thanh cuộn cho Firefox */
+        .category-tabs {
+            scrollbar-width: thin;
+            scrollbar-color: #ccc #f1f1f1;
+        }
+
         /* ... (Các giữ nguyên các biến :root và style cũ của bạn) ... */
         :root {
             --messenger-color: #0084ff;
@@ -151,7 +141,6 @@
 
         /* Lớp bọc nội dung chính (Box trắng) */
         .products-content-wrapper {
-            background: linear-gradient(180deg, #fbfbfb 0%, #f1eced 100%);
             padding: 20px;
             border-radius: 20px;
             border: 1px solid rgba(0, 0, 0, 0.05);
@@ -206,7 +195,7 @@
             position: absolute;
             top: 10px;
             right: 10px;
-            background: #333;
+            background: #ffffff !important;
             color: #ffffff;
             padding: 3px 10px;
             font-size: 11px;

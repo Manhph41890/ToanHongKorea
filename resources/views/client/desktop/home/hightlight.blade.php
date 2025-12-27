@@ -151,16 +151,60 @@
         }
 
         /* Ảnh sản phẩm */
+        /* 1. Sửa lại container ảnh để cắt phần dư khi phóng to */
         .product-img {
             display: block;
             text-align: center;
             margin-bottom: 10px;
+            overflow: hidden;
+            /* Quan trọng: Để ảnh không tràn ra ngoài khi zoom */
+            border-radius: 8px;
+            position: relative;
+            /* Để làm lớp vệt sáng */
         }
 
+        /* 2. Cấu hình ảnh ban đầu */
         .product-img img {
             max-width: 100%;
             height: 160px;
             object-fit: contain;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            /* Chuyển động mượt */
+            filter: brightness(1);
+        }
+
+        /* 3. Hiệu ứng vệt sáng lướt qua (Shine) */
+        .product-img::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 50%;
+            height: 100%;
+            background: linear-gradient(to right,
+                    rgba(255, 255, 255, 0) 0%,
+                    rgba(255, 255, 255, 0.3) 100%);
+            transform: skewX(-25deg);
+            transition: none;
+        }
+
+        /* 4. Hiệu ứng khi di chuột vào Thẻ sản phẩm */
+        .product-item:hover .product-img img {
+            transform: scale(1.1);
+            /* Phóng to ảnh 10% */
+            filter: brightness(1.1);
+            /* Làm ảnh sáng hơn chút */
+        }
+
+        .product-item:hover .product-img::after {
+            left: 150%;
+            transition: all 0.7s;
+            /* Vệt sáng chạy qua trong 0.7 giây */
+        }
+
+        /* 5. Thêm một chút đổ bóng nhẹ cho ảnh khi hover */
+        .product-item:hover .product-img {
+            filter: drop-shadow(0 10px 10px rgba(0, 0, 0, 0.1));
         }
 
         /* Thông tin chữ */
