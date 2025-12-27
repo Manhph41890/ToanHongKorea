@@ -7,4 +7,9 @@
 @include('client.desktop.home.hightlight')
 
 @include('client.desktop.home.outstanding-pr')
+@include('client.desktop.home.bannerphu')
+@include('client.desktop.home.outstanding-ul')
+
+@include('client.desktop.home.packages')
+@include('client.desktop.home.sevice')
 @endsection

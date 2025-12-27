@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', function () {
 
     // 1. Khởi tạo Swiper ngay khi trang load xong (Không đợi click)
-    const swiper = new Swiper('.banner-swiper', {
+const heroSwiper = new Swiper('.x-hero-swiper-init', {
         loop: true,
         effect: 'slide',
         autoplay: {
@@ -9,13 +9,27 @@ document.addEventListener('DOMContentLoaded', function () {
             disableOnInteraction: false,
         },
         pagination: {
-            el: '.swiper-pagination',
+            el: '.x-hero-dots', // Khớp với class trong HTML
             clickable: true,
         },
         navigation: {
-            nextEl: '.swiper-button-next',
-            prevEl: '.swiper-button-prev',
+            nextEl: '.x-hero-next', // Khớp với class trong HTML
+            prevEl: '.x-hero-prev', // Khớp với class trong HTML
         },
+        speed: 800,
+    });
+
+    const midBannerSwiper = new Swiper('.mid-banner-swiper', {
+        loop: true,
+        autoplay: {
+            delay: 3000, // 4 giây đổi ảnh một lần
+            disableOnInteraction: false,
+        },
+        navigation: {
+            nextEl: '.mid-banner-next',
+            prevEl: '.mid-banner-prev',
+        },
+        effect: 'slide',
         speed: 800,
     });
 

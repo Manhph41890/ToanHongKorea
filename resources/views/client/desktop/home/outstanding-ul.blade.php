@@ -1,20 +1,20 @@
 <section class="featured-products">
     <div class="container">
         <!-- Header: Tiêu đề và Điều hướng -->
-        <div class="products-content-wrapper shadow-sm"
-            style="            background: linear-gradient(180deg, #f9f8f8 0%, #ededee 100%);">
+        <div class="products-content-wrapper shadow-sm">
             <div class="d-flex justify-content-between align-items-end mb-4">
                 <div class="section-title-wrapper">
-                    <h2 class="section-title" style="color: #1E293C">IPHONE CHÍNH HÃNG</h2>
+                    <h2 class="section-title" style="color: #1E293C">SAMSUNG CHÍNH HÃNG</h2>
                     <div class="title-underline"></div>
                 </div>
+
                 <div class="category-tabs">
                     <a href="#" class="tab-item active">Nổi bật</a>
                     <a href="#" class="tab-item">Iphone 17 pro</a>
                     <a href="#" class="tab-item">Máy lạnh</a>
                     <a href="#" class="tab-item">Quạt</a>
                     <a href="#" class="tab-item">Tủ lạnh</a>
-                    <a href="#" class="tab-item">Máy giặt</a>   
+                    <a href="#" class="tab-item">Máy giặt</a>
                 </div>
                 <!-- Điều hướng (Dành cho Slider sau này) -->
                 <div class="product-nav d-none d-md-flex">
@@ -52,6 +52,7 @@
                                     <i class="fa-solid fa-star"></i>
                                     <span class="rating-count">(12)</span>
                                 </div>
+                                
 
                                 <!-- Nhóm nút bấm -->
                                 <div class="product-actions">
@@ -150,6 +151,7 @@
 
         /* Lớp bọc nội dung chính (Box trắng) */
         .products-content-wrapper {
+            background: linear-gradient(180deg, #fbfbfb 0%, #f1eced 100%);
             padding: 20px;
             border-radius: 20px;
             border: 1px solid rgba(0, 0, 0, 0.05);

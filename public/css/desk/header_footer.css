@@ -3,6 +3,42 @@
     --text-white: #ffffff;
     --transition: all 0.3s ease;
 }
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+/* Bước 2: Tạo lớp bọc (Container) */
+.container {
+    width: 100%;             /* Luôn chiếm 100% trên màn hình nhỏ */
+    max-width: 1200px !important;       /* Không bao giờ vượt quá 1200px */
+    margin-right: auto !important;      /* Căn giữa */
+    margin-left: auto !important;       /* Căn giữa */
+    padding-right: 15px;     /* Khoảng đệm để nội dung không dính sát mép màn hình điện thoại */
+    padding-left: 15px;      /* Khoảng đệm trên mobile */
+}
+
+/* Hiệu ứng mượt mà khi cuộn trang */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Tùy chỉnh thanh cuộn cho chuyên nghiệp */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
 
 .main-header {
     background-color: var(--primary-color);
@@ -27,7 +63,8 @@
 }
 
 .logo img {
-    height: 60px; /* Điều chỉnh tùy theo ảnh thật */
+    height: 60px;
+    /* Điều chỉnh tùy theo ảnh thật */
 }
 
 .search-box {
@@ -93,7 +130,7 @@
     padding: 10px 0;
 }
 
-.nav-list > li > a {
+.nav-list>li>a {
     color: white;
     text-decoration: none;
     font-weight: 600;
@@ -130,8 +167,9 @@
     left: 0;
     background: white;
     min-width: 200px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-    display: none; /* Ẩn mặc định */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    display: none;
+    /* Ẩn mặc định */
     list-style: none;
     padding: 10px 0;
     z-index: 100;
@@ -148,7 +186,7 @@
     transition: var(--transition);
 }
 
-.dropdown-menu li:hover > a {
+.dropdown-menu li:hover>a {
     background: #f5f5f5;
     color: #000;
 }
@@ -167,19 +205,26 @@
     display: none;
     list-style: none;
     padding: 10px 0;
-    box-shadow: 5px 5px 15px rgba(0,0,0,0.1);
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.1);
 }
 
 /* Hiển thị khi hover */
-.has-dropdown:hover > .dropdown-menu,
-.has-submenu:hover > .submenu {
+.has-dropdown:hover>.dropdown-menu,
+.has-submenu:hover>.submenu {
     display: block;
     animation: fadeIn 0.2s ease;
 }
 
 @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(5px); }
-    to { opacity: 1; transform: translateY(0); }
+    from {
+        opacity: 0;
+        transform: translateY(5px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 
@@ -210,7 +255,8 @@
 }
 
 .footer-logo img {
-    height: 80px; /* Tùy chỉnh kích thước logo */
+    height: 80px;
+    /* Tùy chỉnh kích thước logo */
     margin-bottom: 20px;
 }
 
@@ -224,7 +270,8 @@
 .footer-title {
     font-size: 18px;
     font-weight: bold;
-    color: #d4af37; /* Màu vàng Gold */
+    color: #d4af37;
+    /* Màu vàng Gold */
     margin-bottom: 25px;
     position: relative;
     padding-bottom: 10px;
@@ -240,12 +287,14 @@
     background-color: #d4af37;
 }
 
-.footer-links, .footer-contact {
+.footer-links,
+.footer-contact {
     list-style: none;
     padding: 0;
 }
 
-.footer-links li, .footer-contact li {
+.footer-links li,
+.footer-contact li {
     margin-bottom: 12px;
     display: flex;
     align-items: flex-start;
@@ -305,6 +354,7 @@
     font-size: 13px;
     color: #777;
 }
-.iconfy{
+
+.iconfy {
     margin-top: 8px;
 }
