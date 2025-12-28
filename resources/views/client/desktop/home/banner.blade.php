@@ -1,4 +1,4 @@
-<section class="x-hero-section-wrapper">
+<section class="x-hero-section-wrapper mt-3">
     <div class="x-hero-container">
         <!-- Khối Banner Top: Slider + Banner Phụ -->
         <div class="x-hero-top-layout">
@@ -83,6 +83,26 @@
 </section>
 @push('styles')
     <style>
+        /* Tùy chỉnh thêm để các nút điều hướng hiển thị đẹp hơn */
+.x-hero-main-carousel {
+    position: relative; /* Quan trọng để định vị nút điều hướng */
+}
+
+.x-hero-prev, .x-hero-next {
+    color: #fff; /* Màu nút */
+    background: rgba(0,0,0,0.2);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+.x-hero-prev::after, .x-hero-next::after {
+    font-size: 18px; /* Chỉnh kích thước mũi tên */
+}
+
+.x-hero-dots .swiper-pagination-bullet-active {
+    background: #C10000; /* Màu của dấu chấm khi đang hoạt động */
+}
         /* =================================================== x-hero-section =============================================== */
 
         /* Container chung */

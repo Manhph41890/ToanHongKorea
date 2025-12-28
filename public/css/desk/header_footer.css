@@ -4,11 +4,88 @@
     --transition: all 0.3s ease;
 }
 
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+/* Bước 2: Tạo lớp bọc (Container) */
+.container {
+    width: 100%;
+    /* Luôn chiếm 100% trên màn hình nhỏ */
+    max-width: 1200px !important;
+    /* Không bao giờ vượt quá 1200px */
+    margin-right: auto !important;
+    /* Căn giữa */
+    margin-left: auto !important;
+    /* Căn giữa */
+    padding-right: 15px;
+    /* Khoảng đệm để nội dung không dính sát mép màn hình điện thoại */
+    padding-left: 15px;
+    /* Khoảng đệm trên mobile */
+}
+
+/* Hiệu ứng mượt mà khi cuộn trang */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Tùy chỉnh thanh cuộn cho chuyên nghiệp */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
 .main-header {
-    background-color: var(--primary-color);
+    background: linear-gradient(180deg, #1E293C 45%, #e56583 100%) !important;
     color: var(--text-white);
     padding: 15px 0 5px 0;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+    /* Cố định Header */
+    position: fixed;
+    /* Bắt buộc dùng fixed để kiểm soát vị trí chính xác */
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+
+    /* Hiệu ứng chuyển động */
+    transition: transform 0.4s ease-in-out, background 0.3s ease;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Lớp này sẽ được JS thêm vào khi người dùng kéo xuống */
+.header-hidden {
+    transform: translateY(-100%);
+    /* Đẩy toàn bộ header lên trên màn hình */
+}
+
+/* Tùy chọn: Làm header nhỏ lại hoặc đổi màu khi đã cuộn (nhìn sẽ xịn hơn) */
+.header-scrolled {
+    padding: 8px 0 2px 0 !important;
+            background: linear-gradient(180deg, #1E293C 45%, #e56583 100%) !important;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* QUAN TRỌNG: Vì header là fixed, bạn cần đẩy nội dung trang xuống 
+   để không bị header che mất phần đầu */
+body {
+    padding-top: 130px;
+    /* Điều chỉnh con số này bằng với chiều cao header của bạn */
 }
 
 .container {
@@ -27,7 +104,8 @@
 }
 
 .logo img {
-    height: 60px; /* Điều chỉnh tùy theo ảnh thật */
+    height: 60px;
+    /* Điều chỉnh tùy theo ảnh thật */
 }
 
 .search-box {
@@ -93,7 +171,7 @@
     padding: 10px 0;
 }
 
-.nav-list > li > a {
+.nav-list>li>a {
     color: white;
     text-decoration: none;
     font-weight: 600;
@@ -130,8 +208,9 @@
     left: 0;
     background: white;
     min-width: 200px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-    display: none; /* Ẩn mặc định */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    display: none;
+    /* Ẩn mặc định */
     list-style: none;
     padding: 10px 0;
     z-index: 100;
@@ -148,7 +227,7 @@
     transition: var(--transition);
 }
 
-.dropdown-menu li:hover > a {
+.dropdown-menu li:hover>a {
     background: #f5f5f5;
     color: #000;
 }
@@ -167,19 +246,26 @@
     display: none;
     list-style: none;
     padding: 10px 0;
-    box-shadow: 5px 5px 15px rgba(0,0,0,0.1);
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.1);
 }
 
 /* Hiển thị khi hover */
-.has-dropdown:hover > .dropdown-menu,
-.has-submenu:hover > .submenu {
+.has-dropdown:hover>.dropdown-menu,
+.has-submenu:hover>.submenu {
     display: block;
     animation: fadeIn 0.2s ease;
 }
 
 @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(5px); }
-    to { opacity: 1; transform: translateY(0); }
+    from {
+        opacity: 0;
+        transform: translateY(5px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 
@@ -210,7 +296,8 @@
 }
 
 .footer-logo img {
-    height: 80px; /* Tùy chỉnh kích thước logo */
+    height: 80px;
+    /* Tùy chỉnh kích thước logo */
     margin-bottom: 20px;
 }
 
@@ -224,7 +311,8 @@
 .footer-title {
     font-size: 18px;
     font-weight: bold;
-    color: #d4af37; /* Màu vàng Gold */
+    color: #d4af37;
+    /* Màu vàng Gold */
     margin-bottom: 25px;
     position: relative;
     padding-bottom: 10px;
@@ -240,12 +328,14 @@
     background-color: #d4af37;
 }
 
-.footer-links, .footer-contact {
+.footer-links,
+.footer-contact {
     list-style: none;
     padding: 0;
 }
 
-.footer-links li, .footer-contact li {
+.footer-links li,
+.footer-contact li {
     margin-bottom: 12px;
     display: flex;
     align-items: flex-start;
@@ -305,6 +395,7 @@
     font-size: 13px;
     color: #777;
 }
-.iconfy{
+
+.iconfy {
     margin-top: 8px;
 }

@@ -1,12 +1,13 @@
 <section class="main-category-section">
     <div class="container">
-        <!-- Tiêu đề có gạch chân -->
-        <div class="section-header">
-            <h2 class="section-title">DANH MỤC CHÍNH</h2>
-        </div>
+
 
         <!-- Lưới danh mục -->
         <div class="category-grid">
+                    <!-- Tiêu đề có gạch chân -->
+        <div class="section-header">
+            <h2 class="section-title">DANH MỤC CHÍNH</h2>
+        </div>
             <!-- Item iPhone -->
             <a href="/iphone" class="category-item">
                 <div class="category-icon">
@@ -28,7 +29,7 @@
                 <div class="category-icon">
                     <img src="{{ asset('images/categories/simm.png') }}" alt="SIM">
                 </div>
-                <span class="category-label">GÓI CƯỚC</span>
+                <span class="category-label">DỊCH VỤ SIM</span>
             </a>
         </div>
     </div>

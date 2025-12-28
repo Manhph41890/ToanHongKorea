@@ -1,7 +1,8 @@
 <div class="card mb-3 p-3 bg-light variant-item" data-index="{{ $index }}">
     <div class="d-flex justify-content-between align-items-center">
         <h6 class="mb-0 text-primary font-weight-bold">Biến thể #{{ $index + 1 }}</h6>
-        @if ($index > 0 || (isset($variant) && $variant->id))
+        {{-- @if ($index > 0 || (isset($variant) && $variant->id)) --}}
+        @if ($index > 0 || (isset($variant) && data_get($variant, 'id')))
             <button type="button" class="btn btn-danger btn-sm remove-variant-btn">
                 <i class="fas fa-times"></i> Xóa
             </button>
@@ -9,9 +10,13 @@
     </div>
     
     <div class="row mt-2">
-        @if (isset($variant) && $variant->id)
+        {{-- @if (isset($variant) && $variant->id)
             <input type="hidden" name="variants[{{ $index }}][id]" value="{{ $variant->id }}">
-        @endif
+        @endif --}}
+
+        @if (isset($variant) && data_get($variant, 'id'))
+    <input type="hidden" name="variants[{{ $index }}][id]" value="{{ data_get($variant, 'id') }}">
+@endif
 
         <!-- Tình trạng máy (Mới/Cũ) -->
         <div class="col-md-4 mb-3">

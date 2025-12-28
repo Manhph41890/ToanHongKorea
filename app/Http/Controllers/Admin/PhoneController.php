@@ -65,13 +65,6 @@ class PhoneController extends Controller
         return view('admin.phones.variant_form_fields', compact('index', 'sizes', 'colors'))->render();
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    /**
-     * Store a newly created resource in storage.
-     * Lưu sản phẩm và các biến thể mới vào cơ sở dữ liệu.
-     */
     public function store(StorePhoneRequest $request)
     {
         DB::beginTransaction();
@@ -97,7 +90,7 @@ class PhoneController extends Controller
                 'short_description' => $request->short_description,
                 'description'   => $request->description,
                 'main_image'    => $mainImagePath,
-                'status'        => 'còn_hàng',
+                'is_active'        => 1,
             ]);
 
             // 4. Xử lý các biến thể (Variants)
