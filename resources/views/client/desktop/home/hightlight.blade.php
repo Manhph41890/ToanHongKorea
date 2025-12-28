@@ -9,41 +9,54 @@
             </div>
 
             <!-- Danh sách sản phẩm -->
-            <div class="product-slider-container swiper product-swiper"> <!-- Thêm class swiper -->
-                <!-- Nút điều hướng (Để ngoài wrapper) -->
+            <div class="product-slider-container swiper product-swiper">
+                <!-- Nút điều hướng -->
                 <button class="slider-nav prev"><i class="fas fa-chevron-left"></i></button>
 
-                <div class="product-grid swiper-wrapper"> <!-- Thêm class swiper-wrapper -->
-                    @for ($i = 0; $i < 7; $i++)
-                        {{-- Tăng số lượng để test slide --}}
-                        <div class="product-item swiper-slide"> <!-- Thêm class swiper-slide -->
+                <div class="product-grid swiper-wrapper">
+                    @foreach ($featuredPhones as $phone)
+                        @php
+                            // Lấy biến thể đầu tiên (đã được sắp xếp theo giá thấp nhất ở controller)
+                            $defaultVariant = $phone->variants->first();
+                            // Lấy giá
+                            $price = $defaultVariant ? $defaultVariant->price : 0;
+                            // Giả định giá cũ bằng giá hiện tại + 20% (vì DB bạn chưa có giá cũ)
+                            $oldPrice = $price * 1.2; 
+                        @endphp
+
+                        <div class="product-item swiper-slide">
                             <div class="badge-container">
-                                <span class="badge-sale">Giảm 30%</span>
-                                <span class="badge-installment">Không trả góp</span>
+                                <span class="badge-sale">Giảm 20%</span>
+                                <span class="badge-installment">Trả góp 0%</span>
                             </div>
 
                             <a href="#" class="product-img">
-                                <img src="https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/i/p/iphone-13-pro-max.png"
-                                    alt="iPhone 13">
+                                <img src="{{ asset('storage/' . $phone->main_image) }}"
+                                    alt="{{ $phone->name }}"
+                                    onerror="this.src='https://via.placeholder.com/358x358?text=No+Image'">
                             </a>
 
                             <div class="product-info">
                                 <h3 class="product-name">
-                                    <a href="#">iPhone 13 Pro Max 128GB - Cũ trầy xước</a>
+                                    <a href="#">
+                                        {{ $phone->name }} 
+                                        {{ $defaultVariant && $defaultVariant->size ? ' ' . $defaultVariant->size->name : '' }}
+                                    </a>
                                 </h3>
                                 <div class="price-group">
-                                    <span class="price-now">12.590.000đ</span>
-                                    <span class="price-old">31.990.000đ</span>
+                                    <span class="price-now">{{ number_format($price, 0, ',', '.') }} won</span>
+                                    <span class="price-old">{{ number_format($oldPrice, 0, ',', '.') }} won</span>
                                 </div>
                                 <div class="product-footer">
-                                    <span class="rating"><i class="fas fa-star"></i> 4.9</span>
-                                    <button class="btn-favorite">
+                                    <!-- Phần rating bạn có thể làm động sau nếu có bảng reviews -->
+                                    <span class="rating"><i class="fas fa-star"></i> 5.0</span>
+                                    <button class="btn-favorite" data-id="{{ $phone->id }}">
                                         <i class="far fa-heart"></i> Yêu thích
                                     </button>
                                 </div>
                             </div>
                         </div>
-                    @endfor
+                    @endforeach
                 </div>
 
                 <button class="slider-nav next"><i class="fas fa-chevron-right"></i></button>
@@ -51,7 +64,6 @@
         </div>
     </div>
 </section>
-
 @push('styles')
     <style>
         /* Màu nền chủ đạo */

@@ -1,4 +1,4 @@
-<section class="x-hero-section-wrapper">
+<section class="x-hero-section-wrapper mt-3">
     <div class="x-hero-container">
         <!-- Khối Banner Top: Slider + Banner Phụ -->
         <div class="x-hero-top-layout">

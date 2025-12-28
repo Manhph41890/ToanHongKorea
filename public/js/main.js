@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', function () {
 
     // 1. Khởi tạo Swiper ngay khi trang load xong (Không đợi click)
-const heroSwiper = new Swiper('.x-hero-swiper-init', {
+    const heroSwiper = new Swiper('.x-hero-swiper-init', {
         loop: true,
         effect: 'slide',
         autoplay: {
@@ -32,7 +32,23 @@ const heroSwiper = new Swiper('.x-hero-swiper-init', {
         effect: 'slide',
         speed: 800,
     });
-
+    const subSwipers = new Swiper('.banner-sub-swiper', {
+        loop: true,
+        autoplay: {
+            delay: 4000, // 4 giây đổi ảnh một lần
+            disableOnInteraction: false,
+        },
+        speed: 800,
+        effect: 'slide',
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+        },
+        // Nếu muốn ảnh hiện ra mượt mà hơn
+        fadeEffect: {
+            crossFade: true
+        }
+    });
     // 2. Swiper cho Sản phẩm nổi bật (MỚI)
     const productSwiper = new Swiper('.product-swiper', {
         slidesPerView: 2,      // Mặc định cho mobile
@@ -87,5 +103,29 @@ const heroSwiper = new Swiper('.x-hero-swiper-init', {
         });
     }
 
+    let lastScrollY = window.scrollY;
+    const header = document.querySelector(".main-header");
 
+    window.addEventListener("scroll", () => {
+        const currentScrollY = window.scrollY;
+
+        // 1. Xử lý ẩn hiện khi cuộn lên/xuống
+        if (currentScrollY > lastScrollY && currentScrollY > 150) {
+            // Đang cuộn xuống và đã qua khỏi 150px -> Ẩn header
+            header.classList.add("header-hidden");
+        } else {
+            // Đang cuộn lên -> Hiện header
+            header.classList.remove("header-hidden");   
+        }
+
+        // 2. Thêm hiệu ứng thu nhỏ khi đã cuộn qua một đoạn
+        if (currentScrollY > 50) {
+            header.classList.add("header-scrolled");
+        } else {
+            header.classList.remove("header-scrolled");
+        }
+
+        // Cập nhật vị trí cuộn cuối cùng
+        lastScrollY = currentScrollY;
+    });
 });
