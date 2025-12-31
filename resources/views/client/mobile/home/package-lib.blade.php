@@ -140,7 +140,6 @@
             margin-left: 4px;
         }
 
-
         /* Body */
         .spc-card-body {
             display: flex;
