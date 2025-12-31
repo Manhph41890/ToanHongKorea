@@ -11,7 +11,9 @@
             <a href="{{ route('facebook.login') }}" class="facebook">
                 <i class="fab fa-facebook-f"></i>
             </a>
-            <a href="#" class="google"><i class="fab fa-google-plus-g"></i></a>
+            <a href="{{ route('google.login') }}" class="google">
+                <i class="fab fa-google-plus-g"></i>
+            </a>
         </div>
 
         <div class="divider">Hoặc</div>

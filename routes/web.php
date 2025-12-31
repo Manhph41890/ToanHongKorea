@@ -32,6 +32,10 @@ Route::post('auth/logout', [AuthController::class, 'logout'])->name('logout');
 Route::get('auth/facebook', [AuthController::class, 'redirectToFacebook'])->name('facebook.login');
 Route::get('auth/facebook/callback', [AuthController::class, 'handleFacebookCallback']);
 
+// Google Login
+Route::get('auth/google', [AuthController::class, 'redirectToGoogle'])->name('google.login');
+Route::get('auth/google/callback', [AuthController::class, 'handleGoogleCallback']);
+
 Route::get('/test/page', function () {
     return view('client.desktop.partials.header');
 });
