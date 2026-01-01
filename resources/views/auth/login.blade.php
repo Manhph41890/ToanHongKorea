@@ -30,7 +30,6 @@
                 <small class="error-text">{{ $message }}</small>
             @enderror
 
-
             <div class="form-group">
                 <i class="fas fa-lock input-icon"></i>
                 <input type="password" name="password" placeholder="Mật khẩu"
