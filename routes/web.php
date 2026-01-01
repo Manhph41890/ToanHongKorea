@@ -36,7 +36,6 @@ Route::prefix('auth')->controller(AuthController::class)->group(function () {
     Route::get('google/callback', [AuthController::class, 'handleGoogleCallback']);
 });
 
-
 Route::get('/test/page', function () {
     return view('client.desktop.partials.header');
 });
