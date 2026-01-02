@@ -21,8 +21,8 @@ Route::get('/phone/{slug}', [PhoneClientController::class, 'phoneDetail'])->name
 Route::get('/{slug}', [PhoneClientController::class, 'listByCategory'])->name('category.show');
 
 // Dành cho gói cước
-Route::get('/goi-cuoc/{slug}', [PackageClientController::class, 'listByCategory']);
-Route::get('/chi-tiet-goi/{slug}', [PackageClientController::class, 'detail']);
+Route::get('/goi-cuoc/{slug}', [PackageClientController::class, 'listByCategory'])->name('package.category');
+Route::get('/chi-tiet-goi/{slug}', [PackageClientController::class, 'detail'])->name('package.detail');
 
 // Hiển thị form đăng nhập
 Route::get('auth/login', [AuthController::class, 'showLoginForm'])->name('login');
