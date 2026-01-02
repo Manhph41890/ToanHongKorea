@@ -42,7 +42,7 @@
     @include('client.mobile.partials.header') {{-- Bao gồm phần header --}}
 
     @yield('content') {{-- Đây là nơi nội dung chính của từng trang sẽ được inject vào --}}
-
+  @include('client.mobile.layouts.contact')
     @include('client.mobile.partials.footer') {{-- Bao gồm phần footer --}}
 
     @stack('scripts')

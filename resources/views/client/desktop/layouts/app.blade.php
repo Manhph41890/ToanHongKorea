@@ -45,77 +45,8 @@
 
     @yield('content') {{-- Đây là nơi nội dung chính của từng trang sẽ được inject vào --}}
     <!-- Floating Messenger Button -->
-    
-    <div id="messenger-widget" class="messenger-fixed">
-        <div class="messenger-tooltip">Bấm để chat với tư vấn viên!</div>
-        <a href="javascript:void(0)" id="messenger-bubble" onclick="openMessenger()">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/b/be/Facebook_Messenger_logo_2020.svg"
-                alt="Messenger">
-        </a>
-    </div>
 
-    <style>
-        .messenger-fixed {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            z-index: 9999;
-            display: flex;
-            flex-direction: column;
-            align-items: flex-end;
-        }
-
-        #messenger-bubble {
-            width: 60px;
-            height: 60px;
-            background: #fff;
-            border-radius: 50%;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: transform 0.3s;
-        }
-
-        #messenger-bubble:hover {
-            transform: scale(1.1);
-        }
-
-        #messenger-bubble img {
-            width: 45px;
-            height: 45px;
-        }
-
-        .messenger-tooltip {
-            background: #333;
-            color: #fff;
-            padding: 5px 12px;
-            border-radius: 5px;
-            font-size: 13px;
-            margin-bottom: 10px;
-            position: relative;
-            animation: bounce 2s infinite;
-        }
-
-        @keyframes bounce {
-
-            0%,
-            20%,
-            50%,
-            80%,
-            100% {
-                transform: translateY(0);
-            }
-
-            40% {
-                transform: translateY(-5px);
-            }
-
-            60% {
-                transform: translateY(-3px);
-            }
-        }
-    </style>
+    @include('client.desktop.layouts.contact')
     @include('client.desktop.partials.footer') {{-- Bao gồm phần footer --}}
 
     @stack('scripts')
