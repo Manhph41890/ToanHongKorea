@@ -45,6 +45,7 @@
 
     @yield('content') {{-- Đây là nơi nội dung chính của từng trang sẽ được inject vào --}}
     <!-- Floating Messenger Button -->
+    
     <div id="messenger-widget" class="messenger-fixed">
         <div class="messenger-tooltip">Bấm để chat với tư vấn viên!</div>
         <a href="javascript:void(0)" id="messenger-bubble" onclick="openMessenger()">

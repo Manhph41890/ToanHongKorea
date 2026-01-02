@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', function() {
     let selectedColor = null;
     let currentVariant = null;
 
-    const pageId = "100090503628117"; // ID Fanpage của bạn
+    const pageId = "100095174172336"; // ID Fanpage của bạn
     const phoneName = "{{ $phone->name }}";
     const currentUrl = window.location.href;
 

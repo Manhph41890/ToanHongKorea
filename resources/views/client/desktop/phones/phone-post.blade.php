@@ -50,7 +50,7 @@
                     Swal.fire({
                         icon: 'warning',
                         title: 'Thông báo',
-                        text: 'Vui lòng chọn đầy đủ Thông tin loại máy, Dung lượng và Màu sắc!',
+                        text: 'Vui lòng chọn đầy đủ Tình trạng, Dung lượng và Màu sắc!',
                         confirmButtonColor: '#0084FF'
                     });
                     return;
@@ -65,7 +65,7 @@
                 // Nội dung gửi Shop
                 let message = `Chào Shop, mình muốn mua:\n`;
                 message += `📱 Sản phẩm: ${phoneName}\n`;
-                message += `✨ Tình trạng: ${selectedCondition == 'new' ? 'used' : 'Like New'}\n`;
+                message += `✨ Tình trạng: ${selectedCondition == 'new' ? 'Mới 100%' : 'Like New'}\n`;
                 message += `💾 Cấu hình: ${sizeText} - ${colorText}\n`;
                 message += `💰 Giá: ${price}\n`;
                 message += `🔗 Link: ${window.location.href}`;
@@ -73,27 +73,27 @@
                 // Bước 1: Copy vào bộ nhớ đệm
                 copyToClipboard(message);
 
-                // Bước 2: Hiện dòng chữ hướng dẫn dưới nút (nếu có)
+                // Bước 2: Hiện dòng chữ hướng dẫn (Sửa lỗi logic của bạn - giờ nó mới hiện)
                 const guide = document.getElementById('copy-guide');
                 if (guide) {
                     guide.style.display = 'inline-block';
                 }
 
-                // Bước 3: Hiện thông báo xịn sò (Chỉ có 1 nút duy nhất)
+                // Bước 3: Hiện thông báo xịn sò
                 Swal.fire({
                     title: 'Đã sao chép đơn hàng!',
                     html: 'Thông tin sản phẩm đã được copy. <br>Bạn chỉ cần <b>Dán (Ctrl+V)</b> vào khung chat nhé!',
                     icon: 'success',
+                    showCancelButton: true,
                     confirmButtonColor: '#0084FF',
+                    cancelButtonColor: '#6e7881',
                     confirmButtonText: 'Mở Messenger ngay',
-                    allowOutsideClick: false, // Không cho phép click ra ngoài để tắt
-                    allowEscapeKey: false // Không cho phép nhấn nút Esc để tắt
+                    cancelButtonText: 'Đóng'
                 }).then((result) => {
                     if (result.isConfirmed) {
                         openMessenger();
                     }
                 });
-
             };
         }
 
