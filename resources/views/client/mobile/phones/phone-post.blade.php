@@ -4,6 +4,7 @@
         let selectedSize = null;
         let selectedColor = null;
         let currentVariant = null;
+        
 
         const pageId = "100095174172336";
         const phoneName = "{{ $phone->name }}";
