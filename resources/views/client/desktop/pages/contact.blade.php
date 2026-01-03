@@ -58,7 +58,7 @@
                     <div class="contact-info-mini">
                         <div class="info-item">
                             <i class="fa-solid fa-location-dot"></i>
-                            <span>123 Đường ABC, Quận 1, TP. Hồ Chí Minh</span>
+                            <span></span>
                         </div>
                         <div class="info-item">
                             <i class="fa-solid fa-phone"></i>
