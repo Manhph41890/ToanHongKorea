@@ -51,7 +51,7 @@
                     <div class="map-wrapper">
                         <!-- Thay src bằng link bản đồ thực tế của bạn -->
                         <iframe
-                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3724.696324263623!2d105.8239083758362!3d21.00480668063943!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3135ac8110996885%3A0x6a05307779f4284d!2zTmdvIFRoSGE!5e0!3m2!1svi!2s!4v1715800000000!5m2!1svi!2s"
+                            src=""
                             width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy">
                         </iframe>
                     </div>
