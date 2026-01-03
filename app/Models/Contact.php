@@ -14,4 +14,3 @@ class Contact extends Model
         'service' => 'enum',
     ];
 }
-
