@@ -20,7 +20,7 @@ use Illuminate\Database\Eloquent\Builder;
  */
 class Contact extends Model
 {
-    use HasFactory, SoftDeletes;
+    use HasFactory;
 
     /**
      * Tối ưu hóa việc fill dữ liệu.

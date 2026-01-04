@@ -33,4 +33,10 @@ class ContactController extends Controller
             return back()->withInput()->with('error', 'Có lỗi xảy ra trong quá trình gửi. Vui lòng thử lại sau!');
         }
     }
+
+    public function getContact() 
+    {
+        $contacts = Contact::get();
+        return view('admin.contacts.index', compact('contacts'));
+    }
 }
