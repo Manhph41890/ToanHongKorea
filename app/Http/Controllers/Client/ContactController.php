@@ -2,14 +2,32 @@
 
 namespace App\Http\Controllers\Client;
 
+use App\Enums\ContactService;
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
+use App\Http\Requests\StoreContactRequest;
+use App\Models\Contact;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\View\View;
 
 class ContactController extends Controller
 {
-    public function index()
+    public function index(): View
     {
-        return view('pages.contact');
+        // Lấy danh sách enum để đổ ra select box ở View
+        $services = ContactService::cases();
+        return view('pages.contact', compact('services'));
     }
 
+    public function store(StoreContactRequest $request): RedirectResponse
+    {
+        try {
+            // Dữ liệu đã được validate tự động bởi StoreContactRequest
+            Contact::create($request->validated());
+
+            return back()->with('success', 'Cảm ơn bạn! Yêu cầu của bạn đã được gửi thành công. Chúng tôi sẽ liên hệ lại sớm nhất.');
+        } catch (\Exception $e) {
+            // Log lỗi nếu cần thiết: Log::error($e->getMessage());
+            return back()->withInput()->with('error', 'Có lỗi xảy ra trong quá trình gửi. Vui lòng thử lại sau!');
+        }
+    }
 }
