@@ -3,21 +3,27 @@
 use App\Http\Controllers\Admin\AccountController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Client\ContactController;
 use App\Http\Controllers\Client\HomeController;
 use App\Http\Controllers\Admin\PackageController;
 use App\Http\Controllers\Admin\PhoneController;
-use App\Http\Controllers\Admin\SimController;
+use App\Http\Controllers\Client\PackageClientController;
 use App\Http\Controllers\Client\PhoneClientController;
 use Illuminate\Support\Facades\Route;
 
 // 1. Trang chủ
 Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('/lien-he',[ContactController::class, 'index'])->name('contact');
 
 // 2. Chi tiết sản phẩm (Ưu tiên khớp route này trước)
 Route::get('/phone/{slug}', [PhoneClientController::class, 'phoneDetail'])->name('phone.detail');
 
 // 3. Danh mục sản phẩm (Để dưới cùng vì nó khớp với mọi chuỗi sau dấu /)
 Route::get('/{slug}', [PhoneClientController::class, 'listByCategory'])->name('category.show');
+
+// Dành cho gói cước
+Route::get('/goi-cuoc/{slug}', [PackageClientController::class, 'listByCategory'])->name('package.category');
+Route::get('/chi-tiet-goi/{slug}', [PackageClientController::class, 'detail'])->name('package.detail');
 
 // Hiển thị form đăng nhập
 Route::prefix('auth')->controller(AuthController::class)->group(function () {

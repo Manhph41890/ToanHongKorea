@@ -13,9 +13,9 @@
             </div>
             <div class="m-pd-badge-condition" id="ss-pd-current-status">Đang chọn...</div>
             <div class="m-pd-slider-dots">
-                 @foreach ($allImages as $index => $path)
+                @foreach ($allImages as $index => $path)
                     <span class="dot {{ $index == 0 ? 'active' : '' }}"></span>
-                 @endforeach
+                @endforeach
             </div>
         </div>
 
@@ -111,10 +111,17 @@
             <button class="m-btn-buy" id="btn-add-to-cart"><i class="fab fa-facebook-messenger"></i> MUA NGAY</button>
         </div>
     </div>
-
-    <script>
-        const VARIANT_DATA = @json($variants);
-    </script>
 @endsection
 
+<script>
+    // Đảm bảo dữ liệu variant luôn có sẵn cho cả 2 bản script
+    const VARIANT_DATA = @json($variants);
+</script>
+
 @include('client.mobile.phones.lib-detail')
+
+@if ($isAndroid)
+    @include('client.mobile.phones.phone-post')
+@else
+    @include('client.mobile.phones.buy-in-iphone')
+@endif
