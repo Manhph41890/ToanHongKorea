@@ -44,6 +44,7 @@
     @endauth
 
     @guest
+        @include('partials.wishlist')
         <div class="guest-group">
             <a href="{{ route('login') }}" class="action-item">
                 <i class="fa-regular fa-circle-user"></i> Đăng nhập

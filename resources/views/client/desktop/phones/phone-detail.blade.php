@@ -7,7 +7,7 @@
             <div class="ss-pd-row">
                 <!-- Cột trái: Hình ảnh -->
                 <div class="ss-pd-col-image" style="max-width: 530px">
-                    <div class="ss-pd-main-img-box" style="min-height: 600px !important;max-height: 600px !important;">
+                    <div class="ss-pd-main-img-box" style="min-height: 550px !important;max-height: 600px !important;">
                         <img id="ss-pd-main-view" src="{{ asset('storage/' . $phone->main_image) }}" alt="{{ $phone->name }}">
                         <span class="ss-pd-badge-condition" id="ss-pd-current-status">Đang chọn...</span>
                     </div>
@@ -38,6 +38,11 @@
                             @endfor
                         </div>
                         <span class="ss-pd-review-count">(5.0/5 - 100% khách hàng hài lòng)</span>
+                        <button class="spc-heart-btn {{ $phone->isFavorited() ? 'active' : '' }}"
+                            data-id="{{ $phone->id }}" data-type="phone">
+                            <i class="{{ $phone->isFavorited() ? 'fa-solid' : 'fa-regular' }} fa-heart"></i>
+                        </button>
+                        <span>Yêu thích</span>
                     </div>
 
                     <div class="ss-pd-price-area">
@@ -91,7 +96,7 @@
 
                     <!-- KHỐI ƯU ĐÃI (Giữ nguyên phong cách chuyên nghiệp) -->
                     <div class="ss-pd-promo-box">
-                        <div class="promo-title"><i class="fas fa-gift"></i> ĐẶC QUYỀN KHI MUA TẠI STORE</div>
+                        <div class="promo-title"><i class="fas fa-gift"></i> ĐẶC QUYỀN KHI MUA TẠI TOANHONG KOREA</div>
                         <ul class="promo-list">
                             <li><i class="check-icon">✓</i> <strong>Bộ phụ kiện:</strong> Tặng Sạc nhanh, Ốp lưng thời
                                 trang, Dán màn hình PPF.</li>
@@ -123,10 +128,11 @@
     <!-- DATA BRIDGE: Truyền dữ liệu sang JS -->
     <script>
         const VARIANT_DATA = @json($variants);
+
         function openMessengerPC() {
-        const pageId = "100095174172336";
-        window.open('https://m.me/' + pageId, '_blank');
-    }
+            const pageId = "100095174172336";
+            window.open('https://m.me/' + pageId, '_blank');
+        }
     </script>
 @endsection
 @include('client.desktop.phones.lib-detail')
