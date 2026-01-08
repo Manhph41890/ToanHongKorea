@@ -39,7 +39,7 @@
 
             if (currentVariant) {
                 // Trường hợp có sẵn hàng/có trong database
-                priceEl.innerText = new Intl.NumberFormat('vi-VN').format(currentVariant.price) + 'đ';
+                priceEl.innerText = new Intl.NumberFormat('vi-VN').format(currentVariant.price) + 'w';
                 skuEl.innerText = currentVariant.sku || 'N/A';
                 stockStatusEl.innerText = "Còn hàng";
                 stockStatusEl.style.color = "#16a34a";
