@@ -27,7 +27,7 @@
                                                     <span class="spc-rating-text">(100+)</span>
                                                 </div>
                                                 <button class="spc-heart-btn {{ $package->isFavorited() ? 'active' : '' }}"
-                                                    data-id="{{ $package->id }}" data-type="phone">
+                                                    data-id="{{ $package->id }}" data-type="package">
                                                     <i
                                                         class="{{ $package->isFavorited() ? 'fa-solid' : 'fa-regular' }} fa-heart"></i>
                                                 </button>
