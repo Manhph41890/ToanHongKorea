@@ -86,6 +86,10 @@
                             <i class="fa-solid fa-phone"></i>
                             <span>010 2828 8333 - 010 8282 6868</span>
                         </div>
+                        <div class="info-item">
+                            <i class="fa-brands fa-facebook"></i>
+                            <a href="https://www.facebook.com/anhtoan270189/" target="_blank">Toàn Hồng Korea</a>
+                        </div>
                     </div>
                 </div>
 
