@@ -20,8 +20,9 @@
                         <div class="col-6 col-md-4 col-lg-3 product-item">
                             <div class="product-card">
                                 <div class="product-badge">
-                                    <button class="spc-heart-btn" title="Thêm vào yêu thích">
-                                        <i class="fa-regular fa-heart"></i>
+                                    <button class="spc-heart-btn {{ $phone->isFavorited() ? 'active' : '' }}"
+                                        data-id="{{ $phone->id }}" data-type="phone">
+                                        <i class="{{ $phone->isFavorited() ? 'fa-solid' : 'fa-regular' }} fa-heart"></i>
                                     </button>
                                 </div>
 

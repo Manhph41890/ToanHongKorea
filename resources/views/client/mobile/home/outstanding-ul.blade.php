@@ -3,7 +3,7 @@
         <div class="ss-content-wrapper shadow-sm mb-4">
             <!-- Header Samsung Style -->
             <div class="ss-header d-flex flex-column flex-lg-row justify-content-between align-items-lg-center">
-                <div class="ss-title-group" >
+                <div class="ss-title-group">
                     <h2 class="ss-title">SAMSUNG GALAXY</h2>
                     <p class="ss-subtitle">Trải nghiệm công nghệ đỉnh cao</p>
                 </div>
@@ -21,8 +21,9 @@
                         @endif
 
                         <div class="product-badge">
-                            <button class="spc-heart-btn" title="Thêm vào yêu thích">
-                                <i class="fa-regular fa-heart"></i>
+                            <button class="spc-heart-btn {{ $phone->isFavorited() ? 'active' : '' }}"
+                                data-id="{{ $phone->id }}" data-type="phone">
+                                <i class="{{ $phone->isFavorited() ? 'fa-solid' : 'fa-regular' }} fa-heart"></i>
                             </button>
                         </div>
 
@@ -63,7 +64,8 @@
                             </div>
 
                             <div class="product-actions">
-                                <a href="{{ route('phone.detail', $samsung->slug) }}" target="_blank" class="btn-messenger">
+                                <a href="{{ route('phone.detail', $samsung->slug) }}" target="_blank"
+                                    class="btn-messenger">
                                     <i class="fa-brands fa-facebook-messenger"></i> MUA NGAY
                                 </a>
                             </div>

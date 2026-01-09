@@ -12,7 +12,7 @@
 
         @if ($items->isEmpty())
             <!-- Empty State chuyên nghiệp -->
-            <div class="wl-empty-state">
+            <div class="wl-empty-state" style="{{ $items->isEmpty() ? 'display:block' : 'display:none' }}">
                 <div class="wl-empty-icon">
                     <i class="fa-regular fa-heart"></i>
                 </div>
