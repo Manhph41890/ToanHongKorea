@@ -31,6 +31,7 @@ class CheckRole
         }
 
         // Nếu không có quyền, trả về lỗi 403 hoặc chuyển hướng
-        abort(403, 'Bạn không có quyền truy cập trang này.');
+        // abort(403, 'Bạn không có quyền truy cập trang này.');
+        return redirect()->route('403');
     }
 }

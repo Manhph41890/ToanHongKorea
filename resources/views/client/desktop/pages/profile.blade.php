@@ -30,7 +30,7 @@
                             <i class="fa-solid fa-clock-rotate-left"></i> Lịch sử đơn hàng
                         </a>
                         
-                        @if($user->role_id == 1)
+                        @if($user->role_id == 1 || $user->role_id == 2)
                         <div class="dp-divider"></div>
                         <a href="{{ route('admin.dashboard') }}" class="dp-menu-item admin-link">
                             <i class="fa-solid fa-gauge-high"></i> Trang quản trị (Admin)

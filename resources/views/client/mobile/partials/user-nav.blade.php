@@ -49,7 +49,7 @@
                     <i class="fa-solid fa-user-gear"></i> Hồ sơ cá nhân
                 </a>
 
-                @if (auth()->user()->role_id == 1)
+                @if (auth()->user()->role_id == 1 || auth()->user()->role_id == 2)
                     <a href="{{ route('admin.dashboard') }}" class="menu-link admin-link">
                         <i class="fa-solid fa-gauge-high"></i> Trang quản trị
                     </a>
