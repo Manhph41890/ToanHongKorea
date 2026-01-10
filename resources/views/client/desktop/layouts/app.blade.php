@@ -50,6 +50,7 @@
     @include('client.desktop.partials.footer')
     @include('layouts.lib.wishlist')
     @stack('scripts')
+    @include('sweetalert::alert')
 </body>
 
 </html>

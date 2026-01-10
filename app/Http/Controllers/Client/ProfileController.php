@@ -12,6 +12,9 @@ class ProfileController extends Controller
 {
     public function index()
     {
+        if (!auth()->check()) {
+            return redirect()->route('auth.login')->with('error', 'Vui lòng đăng nhập để tiếp tục.');
+        }
         $user = Auth::user();
         return view('pages.profile', compact('user'));
     }

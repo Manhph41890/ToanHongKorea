@@ -14,7 +14,7 @@
                         @endif
                     </div>
                 </div>
-                <span class="user-name">{{ auth()->user()->name }}</span>
+                <span class="user-name" style="font-size: large">{{ auth()->user()->name }}</span>
                 <i class="fa-solid fa-chevron-down chevron"></i>
             </div>
 
@@ -26,7 +26,7 @@
                         <p class="user-email">{{ auth()->user()->email }}</p>
                     </div>
 
-                    <a href="/profile" class="menu-item">
+                    <a href="{{ route('profile.index') }}" class="menu-item">
                         <i class="fa-solid fa-user-gear"></i> Hồ sơ cá nhân
                     </a>
 
