@@ -10,7 +10,7 @@ class HTTPStatusController extends Controller
     {
         return view('pages.404');
     }
-        public function http403()
+    public function http403()
     {
         return view('pages.403');
     }

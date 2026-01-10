@@ -1,4 +1,4 @@
-@extends('client.desktop.layouts.app')
+@extends('client.mobile.layouts.app')
 
 @section('content')
 <div class="err-wrapper">
@@ -24,4 +24,4 @@
     </div>
 </div>
 @endsection
-@include('client.desktop.pages.http-lib')
+@include('client.mobile.pages.http-lib')
