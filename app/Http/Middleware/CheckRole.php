@@ -14,22 +14,23 @@ class CheckRole
      *
      * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
      */
-     public function handle(Request $request, Closure $next, ...$roles): Response
+    public function handle(Request $request, Closure $next, ...$roles): Response
     {
-        // 1. Kiểm tra xem người dùng đã đăng nhập chưa
+        // 1. Kiểm tra đăng nhập
         if (!Auth::check()) {
-            return redirect()->route('login');
+            return redirect()->route('login')->with('error', 'Bạn cần đăng nhập trước.');
         }
 
-        $user = Auth::user();
+        // 2. Lấy role_id của user hiện tại
+        $userRoleId = Auth::user()->role_id;
 
-        // 2. Kiểm tra xem role_id của user có nằm trong danh sách quyền được phép không
-        // Giả sử bảng users của bạn có cột 'role_id'
-        if (in_array($user->role_id, $roles)) {
+        // 3. Kiểm tra xem role của user có nằm trong danh sách cho phép không
+        // Các tham số truyền vào từ route sẽ nằm trong mảng $roles
+        if (in_array($userRoleId, $roles)) {
             return $next($request);
         }
 
-        // 3. Nếu không có quyền, trả về lỗi 403 hoặc chuyển hướng
+        // Nếu không có quyền, trả về lỗi 403 hoặc chuyển hướng
         abort(403, 'Bạn không có quyền truy cập trang này.');
     }
 }
