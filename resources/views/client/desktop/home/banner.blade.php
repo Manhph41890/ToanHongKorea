@@ -1,11 +1,14 @@
-<section class="hs-wrapper">
-    <div class="hs-container">
-        <!-- Khối 1: Banner chính & Aside -->
-        <div class="hs-top-grid">
+<section class="x-hero-section-wrapper mt-3">
+    <div class="x-hero-container">
+        <!-- Khối Banner Top: Slider + Banner Phụ -->
+        <div class="x-hero-top-layout">
             <!-- Slider chính -->
-            <div class="hs-main-slider">
-                <div class="swiper hs-swiper-init">
+            <div class="x-hero-main-carousel">
+                <!-- Slider main container -->
+                <div class="swiper x-hero-swiper-init">
+                    <!-- Additional required wrapper -->
                     <div class="swiper-wrapper">
+                        <!-- Slides -->
                         <div class="swiper-slide">
                             <img src="{{ asset('images/banner_1.png') }}" alt="Banner 1">
                         </div>
@@ -14,72 +17,93 @@
                         </div>
                         <div class="swiper-slide">
                             <img src="{{ asset('images/banner_3.png') }}" alt="Banner 3">
+
                         </div>
                     </div>
-                    <!-- Navigation tinh tế hơn -->
-                    <div class="swiper-pagination hs-dots"></div>
-                    <div class="swiper-button-prev hs-nav-btn"></div>
-                    <div class="swiper-button-next hs-nav-btn"></div>
+
+                    <!-- Các nút điều hướng -->
+                    <div class="swiper-pagination x-hero-dots"></div>
+                    <div class="swiper-button-prev x-hero-prev"></div>
+                    <div class="swiper-button-next x-hero-next"></div>
                 </div>
             </div>
 
-            <!-- Banner phải (Aside Promo) -->
-            <div class="hs-aside-promo">
-                <a href="{{ url('phone/iphone-17-pro-max') }}" class="hs-aside-link">
+            <!-- Banner phải cố định -->
+            <div class="x-hero-static-aside">
+                <a href="{{ url('phone/iphone-17-pro-max') }}">
                     <img src="{{ asset('images/banner_right.png') }}" alt="Banner Right">
-                    <div class="hs-aside-overlay">
-                        <span>Khám phá ngay <i class="fa-solid fa-arrow-right"></i></span>
-                    </div>
                 </a>
             </div>
         </div>
 
-        <!-- Khối 2: Hot Deals Grid (Sản phẩm nổi bật) -->
-        <div class="hs-hot-deals">
-            <!-- Item 1: Samsung -->
-            <a href="{{ url('/phone/samsung-galaxy-s24-ultra') }}" class="hs-deal-card">
-                <div class="hs-badge">HOT DEAL</div>
-                <div class="hs-card-content">
-                    <div class="hs-image">
-                        <img src="{{ asset('images/s24_ultra.png') }}" alt="S24 Ultra">
+        <section class="dx-hot-section">
+            <div class="dx-container">
+                <div class="dx-hot-grid">
+                    <!-- Sản phẩm 1 -->
+                    <div class="dx-hot-card">
+                        <div class="dx-card-badge">HOT</div>
+                        <div class="dx-card-inner">
+                            <div class="dx-card-thumb">
+                                <a href="{{ url('/phone/samsung-galaxy-s24-ultra') }}">
+                                    <img src="{{ asset('images/s24_ultra.png') }}" alt="S24 Ultra">
+                                </a>
+                            </div>
+                            <div class="dx-card-desc">
+                                <a href="{{ url('/phone/samsung-galaxy-s24-ultra') }}" class="dx-item-title">
+                                    Galaxy <span>S24 Ultra</span>
+                                </a>
+                                <p class="dx-item-price">930.000 <span>won</span></p>
+                                <a href="{{ url('/phone/samsung-galaxy-s24-ultra') }}" class="dx-btn-view">
+                                    Chi tiết <i class="fa-solid fa-arrow-right"></i>
+                                </a>
+                            </div>
+                        </div>
                     </div>
-                    <div class="hs-info">
-                        <p class="hs-brand">Samsung Galaxy</p>
-                        <h3 class="hs-name">S24 Ultra</h3>
-                        <p class="hs-price">930.000 <span>won</span></p>
-                    </div>
-                </div>
-            </a>
 
-            <!-- Item 2: iPhone -->
-            <a href="{{ url('/phone/iphone-17-pro-max') }}" class="hs-deal-card hs-featured">
-                <div class="hs-badge">PRE-ORDER</div>
-                <div class="hs-card-content">
-                    <div class="hs-image">
-                        <img src="{{ asset('images/iphone_17.png') }}" alt="Iphone 17">
+                    <!-- Sản phẩm 2 -->
+                    <div class="dx-hot-card">
+                        <div class="dx-card-badge">HOT</div>
+                        <div class="dx-card-inner">
+                            <div class="dx-card-thumb">
+                                <a href="{{ url('/phone/iphone-17-pro-max') }}">
+                                    <img src="{{ asset('images/iphone_17.png') }}" alt="Iphone 17">
+                                </a>
+                            </div>
+                            <div class="dx-card-desc">
+                                <a href="{{ url('/phone/iphone-17-pro-max') }}" class="dx-item-title">
+                                    iPhone <span>17 Pro Max</span>
+                                </a>
+                                <p class="dx-item-price">930.000 <span>won</span></p>
+                                <a href="{{ url('/phone/iphone-17-pro-max') }}" class="dx-btn-view">
+                                    Chi tiết <i class="fa-solid fa-arrow-right"></i>
+                                </a>
+                            </div>
+                        </div>
                     </div>
-                    <div class="hs-info">
-                        <p class="hs-brand">Apple iPhone</p>
-                        <h3 class="hs-name">17 Pro Max</h3>
-                        <p class="hs-price">1.250.000 <span>won</span></p>
-                    </div>
-                </div>
-            </a>
 
-            <!-- Item 3: Z Flip -->
-            <a href="{{ url('/phone/samsung-galaxy-z-flip-7') }}" class="hs-deal-card">
-                <div class="hs-badge">NEW TREND</div>
-                <div class="hs-card-content">
-                    <div class="hs-image">
-                        <img src="{{ asset('images/galaxyflip7.png') }}" alt="Z Flip 7">
-                    </div>
-                    <div class="hs-info">
-                        <p class="hs-brand">Samsung Galaxy</p>
-                        <h3 class="hs-name">Z Flip 7</h3>
-                        <p class="hs-price">890.000 <span>won</span></p>
+                    <!-- Sản phẩm 3 -->
+                    <div class="dx-hot-card">
+                        <div class="dx-card-badge">HOT</div>
+                        <div class="dx-card-inner">
+                            <div class="dx-card-thumb">
+                                <a href="{{ url('/phone/samsung-galaxy-z-flip-7') }}">
+                                    <img src="{{ asset('images/galaxyflip7.png') }}" alt="Z Flip 7">
+                                </a>
+                            </div>
+                            <div class="dx-card-desc">
+                                <a href="{{ url('/phone/samsung-galaxy-z-flip-7') }}" class="dx-item-title">
+                                    Galaxy <span>Z Flip 7</span>
+                                </a>
+                                <p class="dx-item-price">930.000 <span>won</span></p>
+                                <a href="{{ url('/phone/samsung-galaxy-z-flip-7') }}" class="dx-btn-view">
+                                    Chi tiết <i class="fa-solid fa-arrow-right"></i>
+                                </a>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </a>
-        </div>
+            </div>
+        </section>
     </div>
 </section>
+@include('client.desktop.home.banner-lib')

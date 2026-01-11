@@ -1,253 +1,248 @@
-<style>
-    :root {
-        --hs-navy: #1a222d;
-        --hs-red: #ff4d6d;
-        /* Màu Pink-Red chuẩn của bạn */
-        --hs-white: #ffffff;
-        --hs-gray: #f8fafc;
-        --hs-border: #e2e8f0;
-        --hs-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-    }
+@push('styles')
+    <style>
+        /* Tùy chỉnh thêm để các nút điều hướng hiển thị đẹp hơn */
+        .x-hero-main-carousel {
+            position: relative;
+            /* Quan trọng để định vị nút điều hướng */
+        }
 
-    .hs-wrapper {
-        padding: 30px 0;
-        background-color: var(--hs-white);
-        font-family: 'Inter', sans-serif;
-    }
+        .x-hero-prev,
+        .x-hero-next {
+            color: #fff;
+            /* Màu nút */
+            background: rgba(0, 0, 0, 0.2);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+        }
 
-    .hs-container {
-        max-width: 1240px;
-        margin: 0 auto;
-        padding: 0 15px;
-    }
+        .x-hero-prev::after,
+        .x-hero-next::after {
+            font-size: 18px;
+            /* Chỉnh kích thước mũi tên */
+        }
 
-    /* --- Top Layout: Slider & Aside --- */
-    .hs-top-grid {
-        display: grid;
-        grid-template-columns: 3fr 1fr;
-        gap: 20px;
-        margin-bottom: 30px;
-    }
+        .x-hero-dots .swiper-pagination-bullet-active {
+            background: #C10000;
+            /* Màu của dấu chấm khi đang hoạt động */
+        }
 
-    .hs-main-slider {
-        border-radius: 20px;
-        overflow: hidden;
-        box-shadow: var(--hs-shadow);
-        background: #000;
-    }
+        /* =================================================== x-hero-section =============================================== */
 
-    .hs-main-slider img {
-        width: 100%;
-        height: 400px;
-        /* Chiều cao cố định chuẩn desktop */
-        object-fit: cover;
-    }
+        /* Container chung */
+        .x-hero-container {
+            max-width: 1240px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
 
-    /* Tùy chỉnh Swiper */
-    .hs-nav-btn {
-        width: 45px;
-        height: 45px;
-        background: rgba(255, 255, 255, 0.2);
-        backdrop-filter: blur(10px);
-        border-radius: 50%;
-        color: white !important;
-        transition: 0.3s;
-        opacity: 0;
-        /* Ẩn mặc định, hiện khi hover */
-    }
+        .x-hero-section-wrapper {
+            padding: 20px 0;
+            background-color: #fff;
+        }
 
-    .hs-main-slider:hover .hs-nav-btn {
-        opacity: 1;
-    }
+        /* Layout Banner Top */
+        .x-hero-top-layout {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 25px;
+        }
 
-    .hs-nav-btn:hover {
-        background: var(--hs-red);
-    }
+        .x-hero-main-carousel {
+            flex: 3;
+            /* Chiếm 75% */
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
 
-    .hs-nav-btn:after {
-        font-size: 18px !important;
-        font-weight: bold;
-    }
+        .x-hero-main-carousel img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
 
-    .hs-dots .swiper-pagination-bullet {
-        width: 10px;
-        height: 10px;
-        background: rgba(255, 255, 255, 0.5);
-        opacity: 1;
-    }
+        .x-hero-static-aside {
+            flex: 1;
+            /* Chiếm 25% */
+        }
 
-    .hs-dots .swiper-pagination-bullet-active {
-        background: var(--hs-red) !important;
-        width: 25px;
-        border-radius: 5px;
-    }
+        .x-hero-static-aside img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 8px;
+        }
 
-    /* Aside Promo */
-    .hs-aside-promo {
-        position: relative;
-        border-radius: 20px;
-        overflow: hidden;
-        box-shadow: var(--hs-shadow);
-    }
+        :root {
+            --dx-navy: #1a222d;
+            --dx-red: #ff4d6d;
+            --dx-gray: #f4f7fa;
+            --dx-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+        }
 
-    .hs-aside-link {
-        display: block;
-        height: 100%;
-        position: relative;
-    }
+        .dx-hot-section {
+            padding: 10px 0;
+            background-color: #fff;
+        }
 
-    .hs-aside-promo img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        transition: 0.5s;
-    }
+        .dx-container {
+            max-width: 1240px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
 
-    .hs-aside-overlay {
-        position: absolute;
-        inset: 0;
-        background: linear-gradient(to top, rgba(26, 34, 45, 0.8), transparent);
-        display: flex;
-        align-items: flex-end;
-        padding: 20px;
-        opacity: 0;
-        transition: 0.3s;
-    }
+        /* Header Section */
+        .dx-section-header {
+            margin-bottom: 40px;
+            text-align: center;
+        }
 
-    .hs-aside-overlay span {
-        color: white;
-        font-weight: 700;
-        font-size: 14px;
-        text-transform: uppercase;
-    }
+        .dx-section-title {
+            font-size: 24px;
+            font-weight: 800;
+            color: var(--dx-navy);
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+        }
 
-    .hs-aside-promo:hover img {
-        transform: scale(1.05);
-    }
+        .dx-title-line {
+            width: 60px;
+            height: 4px;
+            background: var(--dx-red);
+            margin: 0 auto;
+            border-radius: 10px;
+        }
 
-    .hs-aside-promo:hover .hs-aside-overlay {
-        opacity: 1;
-    }
+        /* Grid Layout */
+        .dx-hot-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
 
-    /* --- Hot Deals Grid (Cards) --- */
-    .hs-hot-deals {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 25px;
-    }
+        /* Card Design */
+        .dx-hot-card {
+            position: relative;
+            background: #fff;
+            border-radius: 10px;
+            padding: 25px;
+            border: 1px solid #f0f0f0;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            overflow: hidden;
+        }
 
-    .hs-deal-card {
-        background: var(--hs-gray);
-        border-radius: 20px;
-        padding: 25px;
-        text-decoration: none;
-        position: relative;
-        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        border: 1px solid transparent;
-    }
+        .dx-hot-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+            border-color: transparent;
+        }
 
-    .hs-deal-card:hover {
-        background: white;
-        transform: translateY(-10px);
-        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-        border-color: var(--hs-red);
-    }
+        /* Badge HOT */
+        .dx-card-badge {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background: var(--dx-red);
+            color: #fff;
+            padding: 4px 12px;
+            font-size: 11px;
+            font-weight: 800;
+            border-radius: 30px;
+            z-index: 2;
+            box-shadow: 0 4px 10px rgba(255, 77, 109, 0.3);
+        }
 
-    .hs-badge {
-        position: absolute;
-        top: 20px;
-        left: 20px;
-        background: var(--hs-navy);
-        color: white;
-        font-size: 10px;
-        font-weight: 800;
-        padding: 4px 12px;
-        border-radius: 30px;
-        letter-spacing: 1px;
-    }
+        /* Inner Layout */
+        .dx-card-inner {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
 
-    .hs-card-content {
-        display: flex;
-        align-items: center;
-        gap: 20px;
-    }
+        .dx-card-thumb {
+            flex: 1;
+            transition: transform 0.4s ease;
+        }
 
-    .hs-image {
-        flex: 1;
-        transition: 0.4s;
-    }
+        .dx-hot-card:hover .dx-card-thumb {
+            transform: scale(1.08) rotate(-5deg);
+        }
 
-    .hs-image img {
-        max-width: 100%;
-        height: 120px;
-        object-fit: contain;
-        filter: drop-shadow(0 10px 15px rgba(0, 0, 0, 0.1));
-    }
+        .dx-card-thumb img {
+            max-width: 100%;
+            height: auto;
+            object-fit: contain;
+        }
 
-    .hs-deal-card:hover .hs-image {
-        transform: scale(1.1) rotate(-5deg);
-    }
+        /* Description */
+        .dx-card-desc {
+            flex: 1;
+        }
 
-    .hs-info {
-        flex: 1.2;
-        text-align: right;
-    }
+        .dx-item-title {
+            display: block;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: 600;
+            color: #333;
+            line-height: 1.3;
+            margin-bottom: 10px;
+            transition: color 0.3s;
+        }
 
-    .hs-brand {
-        font-size: 12px;
-        color: #94a3b8;
-        font-weight: 600;
-        margin-bottom: 5px;
-    }
+        .dx-item-title span {
+            display: block;
+            font-weight: 800;
+            color: var(--dx-navy);
+        }
 
-    .hs-name {
-        font-size: 22px;
-        font-weight: 800;
-        color: var(--hs-navy);
-        line-height: 1.1;
-        margin-bottom: 10px;
-    }
+        .dx-hot-card:hover .dx-item-title {
+            color: var(--dx-red);
+        }
 
-    .hs-price {
-        font-size: 20px;
-        color: var(--hs-red);
-        font-weight: 900;
-    }
+        .dx-item-price {
+            font-size: 20px;
+            font-weight: 800;
+            color: var(--dx-red);
+            margin-bottom: 15px;
+        }
 
-    .hs-price span {
-        font-size: 14px;
-        font-weight: 400;
-        color: #64748b;
-    }
+        .dx-item-price span {
+            font-size: 12px;
+            font-weight: 400;
+            color: #888;
+            text-transform: uppercase;
+        }
 
-    /* Highlight Card (Card giữa) */
-    .hs-featured {
-        background: #fff1f2;
-        border: 1px dashed var(--hs-red);
-    }
-</style>
+        /* Button View */
+        .dx-btn-view {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--dx-navy);
+            transition: all 0.3s;
+            opacity: 0;
+            transform: translateX(-10px);
+        }
 
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        const swiper = new Swiper('.hs-swiper-init', {
-            loop: true,
-            autoplay: {
-                delay: 4000,
-                disableOnInteraction: false,
-            },
-            effect: 'fade', // Chuyển cảnh kiểu mờ dần nhìn sẽ "sang" hơn trượt thông thường
-            fadeEffect: {
-                crossFade: true
-            },
-            pagination: {
-                el: '.hs-dots',
-                clickable: true,
-            },
-            navigation: {
-                nextEl: '.swiper-button-next',
-                prevEl: '.swiper-button-prev',
-            },
-            speed: 1000,
-        });
-    });
-</script>
+        .dx-hot-card:hover .dx-btn-view {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .dx-btn-view:hover {
+            color: var(--dx-red);
+        }
+
+        .dx-btn-view i {
+            font-size: 12px;
+        }
+
+        /* Layout Hot Products Grid */
+    </style>
+@endpush

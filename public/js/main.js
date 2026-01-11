@@ -1,23 +1,23 @@
 document.addEventListener('DOMContentLoaded', function () {
 
     // 1. Khởi tạo Swiper ngay khi trang load xong (Không đợi click)
-    // const heroSwiper = new Swiper('.x-hero-swiper-init', {
-    //     loop: true,
-    //     effect: 'slide',
-    //     autoplay: {
-    //         delay: 3000,
-    //         disableOnInteraction: false,
-    //     },
-    //     pagination: {
-    //         el: '.x-hero-dots', // Khớp với class trong HTML
-    //         clickable: true,
-    //     },
-    //     navigation: {
-    //         nextEl: '.x-hero-next', // Khớp với class trong HTML
-    //         prevEl: '.x-hero-prev', // Khớp với class trong HTML
-    //     },
-    //     speed: 800,
-    // });
+    const heroSwiper = new Swiper('.x-hero-swiper-init', {
+        loop: true,
+        effect: 'slide',
+        autoplay: {
+            delay: 3000,
+            disableOnInteraction: false,
+        },
+        pagination: {
+            el: '.x-hero-dots', // Khớp với class trong HTML
+            clickable: true,
+        },
+        navigation: {
+            nextEl: '.x-hero-next', // Khớp với class trong HTML
+            prevEl: '.x-hero-prev', // Khớp với class trong HTML
+        },
+        speed: 800,
+    });
 
     const midBannerSwiper = new Swiper('.mid-banner-swiper', {
         loop: true,
