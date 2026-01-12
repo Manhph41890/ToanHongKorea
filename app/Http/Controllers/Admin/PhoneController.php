@@ -421,6 +421,31 @@ class PhoneController extends Controller
         }
     }
 
+    public function toggleFeatured(Phone $phone)
+    {
+        try {
+            // Cách 1: Đảo ngược giá trị hiện tại
+            $phone->is_featured = !$phone->is_featured;
+            $phone->save();
+
+            // Hoặc Cách 2: Lấy giá trị từ request gửi lên (an toàn hơn)
+            // $phone->update(['is_featured' => request('is_featured')]);
+
+            return response()->json([
+                'success' => true,
+                'message' => 'Cập nhật trạng thái nổi bật thành công!',
+                'is_featured' => (bool) $phone->is_featured,
+            ]);
+        } catch (\Exception $e) {
+            return response()->json(
+                [
+                    'success' => false,
+                    'message' => 'Lỗi: ' . $e->getMessage(),
+                ],
+                500,
+            );
+        }
+    }
     /**
      * Remove the specified resource from storage.
      */

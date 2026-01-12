@@ -42,13 +42,15 @@
                     <thead class="bg-light">
                         <tr class="text-secondary small text-uppercase">
                             <th width="5%">STT</th>
-                            <th width="10%">Hình ảnh</th>
-                            <th width="25%">Sản phẩm</th>
-                            <th width="20%">Khoảng giá</th>
-                            <th width="15%">Kho hàng</th>
-                            <th width="10%">Tình trạng</th>
-                            <th width="10%" class="text-center">Hiển thị</th>
-                            <th width="15%" class="text-center">Thao tác</th>
+                            <th width="8%">Hình ảnh</th>
+                            <th width="20%">Sản phẩm</th>
+                            <th width="10%" class="text-center">Lượt xem</th>
+                            <th width="12%">Khoảng giá</th>
+                            <th width="10%">Kho hàng</th>
+                            <th width="10%">Hoạt động</th> <!-- Cột hiển thị Máy mới/cũ -->
+                            <th width="8%" class="text-center">Hiển thị</th>
+                            <th width="7%" class="text-center">Nổi bật</th>
+                            <th width="10%" class="text-center">Thao tác</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -70,6 +72,11 @@
                                     <div class="font-weight-bold text-dark mb-0">{{ $phone->name }}</div>
                                     <small
                                         class="badge badge-light border text-muted">{{ $phone->category->name ?? 'N/A' }}</small>
+                                </td>
+                                <td class="text-center">
+                                    <div class="h6 mb-0 font-weight-bold text-info">
+                                        {{ number_format($phone->views_count ?? 0) }}</div>
+                                    <small class="text-muted">lượt xem</small>
                                 </td>
                                 <td class="align-middle">
                                     @if ($phone->variants->count() > 0)
@@ -117,6 +124,17 @@
                                             id="customSwitch{{ $phone->id }}" data-id="{{ $phone->id }}"
                                             {{ $phone->is_active ? 'checked' : '' }}>
                                         <label class="custom-control-label" for="customSwitch{{ $phone->id }}"></label>
+                                    </div>
+                                </td>
+
+                                <td class="text-center">
+                                    <!-- Nút bật tắt Featured nhanh ngoài danh sách -->
+                                    <div class="custom-control custom-switch">
+                                        <input type="checkbox" class="custom-control-input toggle-featured"
+                                            id="feat{{ $phone->id }}" data-id="{{ $phone->id }}"
+                                            {{ $phone->is_featured ? 'checked' : '' }}>
+                                        <label class="custom-control-label text-warning"
+                                            for="feat{{ $phone->id }}"></label>
                                     </div>
                                 </td>
 
@@ -248,6 +266,35 @@
                     }
                 });
             });
+
+            $('.toggle-featured').change(function() {
+                let is_featured = $(this).prop('checked') ? 1 : 0;
+                let phone_id = $(this).data('id');
+                let url = "{{ route('admin.phones.toggle-featured', ':id') }}";
+                url = url.replace(':id', phone_id);
+
+                $.ajax({
+                    type: "PATCH",
+                    url: url,
+                    data: {
+                        _token: "{{ csrf_token() }}",
+                        is_featured: is_featured
+                    },
+                    success: function(data) {
+                        // Nếu bạn dùng Toastr hoặc SweetAlert để hiện thông báo
+                        console.log(data.message);
+                        // Ví dụ dùng thông báo đơn giản:
+                        // alert(data.message);
+                    },
+                    error: function(xhr, status, error) {
+                        console.error(xhr.responseText);
+                        alert('Có lỗi xảy ra, vui lòng thử lại!');
+                        // Reset lại nút nếu lỗi
+                        $(this).prop('checked', !is_featured);
+                    }
+                });
+            });
         });
     </script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 @endpush

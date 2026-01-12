@@ -41,7 +41,7 @@ class HomeController extends Controller
             ->get();
 
         // 3. Top sản phẩm XEM NHIỀU (Dựa trên views_count thay vì random)
-        $topViewedPhones = Phone::active()
+        $topSellingPhones = Phone::active()
             ->whereHas('variants', function ($query) {
                 $query->where('status', 'còn_hàng');
             })
