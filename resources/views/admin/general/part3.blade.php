@@ -41,7 +41,7 @@
                                                 </div>
                                             </td>
                                             <td class="text-right px-4">
-                                                <a href="#" class="btn btn-sm btn-light rounded-pill px-3">Nhập
+                                                <a href="{{ route('admin.phones.edit', $phone->id) }}" class="btn btn-sm btn-light rounded-pill px-3">Nhập
                                                     thêm</a>
                                             </td>
                                         </tr>
@@ -61,28 +61,34 @@
                     </div>
                     <div class="card-body p-0">
                         <div class="list-group list-group-flush">
-                            @foreach ($employees as $emp)
+                            @forelse ($employees as $emp)
                                 <div class="list-group-item border-0 d-flex align-items-center py-3">
                                     <div class="position-relative mr-3">
                                         <img src="https://ui-avatars.com/api/?name={{ urlencode($emp->name) }}&background=random"
                                             class="rounded-circle" width="40">
+                                        <!-- Chấm xanh Online -->
                                         <span class="position-absolute border border-white rounded-circle bg-success"
-                                            style="bottom: 0; right: 0; width: 12px; height: 12px;"></span>
+                                            style="bottom: 0; right: 0; width: 12px; height: 12px;"
+                                            title="Online"></span>
                                     </div>
                                     <div class="flex-grow-1">
                                         <h6 class="mb-0 text-sm font-weight-bold">{{ $emp->name }}</h6>
-                                        <p class="mb-0 text-xs text-muted">{{ strtoupper($emp->role) }}</p>
+                                        <!-- Hiển thị tên Role từ DB (Quản trị viên/Nhân viên) -->
+                                        <p class="mb-0 text-xs text-muted">{{ $emp->role->name ?? 'N/A' }}</p>
                                     </div>
                                     <div>
-                                        <button class="btn btn-sm btn-light-primary rounded-circle"><i
-                                                class="far fa-comment-dots"></i></button>
+                                        <button class="btn btn-sm btn-light-primary rounded-circle">
+                                            <i class="far fa-comment-dots"></i>
+                                        </button>
                                     </div>
                                 </div>
-                            @endforeach
+                            @empty
+                                <div class="p-3 text-center text-muted">Không có nhân viên nào trực tuyến</div>
+                            @endforelse
                         </div>
                     </div>
                     <div class="card-footer bg-white text-center border-0">
-                        <a href="#" class="text-primary small font-weight-bold">Quản lý nhân sự <i
+                        <a href="{{ route('admin.accounts.index') }}" class="text-primary small font-weight-bold">Quản lý nhân sự <i
                                 class="fas fa-chevron-right ml-1"></i></a>
                     </div>
                 </div>

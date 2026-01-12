@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use Carbon\Carbon;
 
 class User extends Authenticatable
 {
@@ -52,6 +53,12 @@ class User extends Authenticatable
     {
         // $roleIds có thể là 1 số (ví dụ: 1) hoặc 1 mảng (ví dụ: [1, 2])
         return in_array($this->role_id, (array) $roleIds);
+    }
+
+    public function isOnline()
+    {
+        // Coi là online nếu hoạt động trong vòng 5 phút qua
+        return $this->last_seen_at && $this->last_seen_at->gt(now()->subMinutes(5));
     }
 
     /**

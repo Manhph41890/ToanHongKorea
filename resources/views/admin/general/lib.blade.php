@@ -21,7 +21,7 @@
     background-color: #e0f4ff;
     color: #0099ff;
     padding: 5px 12px;
-    border-radius: 50px;
+    border-radius: 5px;
 }
 
 .btn-light-primary {
@@ -30,7 +30,7 @@
     border: none;
 }
 
-.rounded-xl { border-radius: 15px !important; }
+.rounded-xl { border-radius: 5px !important; }
 
 /* Custom Scrollbar cho bảng */
 .table-responsive::-webkit-scrollbar {
@@ -38,7 +38,7 @@
 }
 .table-responsive::-webkit-scrollbar-thumb {
     background: #e3e6f0;
-    border-radius: 10px;
+    border-radius: 5px;
 }
 </style>
 
