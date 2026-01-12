@@ -17,15 +17,14 @@
                     <div class="col-md-4 text-center border-right">
                         <div class="avatar-container mb-3 d-flex align-items-center justify-content-center"
                             style="height: 160px;">
-                            {{-- Ảnh Avatar --}}
+                            {{-- 1. Thẻ ảnh: Mặc định ẩn --}}
                             <img id="modal-avatar-img" src="" alt="Avatar"
                                 class="rounded-circle shadow-sm border"
                                 style="width: 150px; height: 150px; object-fit: cover; display: none;">
 
-                            {{-- Placeholder khi không có ảnh --}}
-                            <div id="modal-avatar-text"
-                                class="rounded-circle bg-primary text-white shadow-sm d-flex align-items-center justify-content-center"
-                                style="width: 150px; height: 150px; font-size: 60px; font-weight: bold; display: none;">
+                            {{-- 2. Thẻ Placeholder: Mặc định ẩn --}}
+                                                      <div id="custom-avatar-placeholder" class="rounded-circle bg-primary text-white shadow-sm"
+                                style="width: 150px; height: 150px; font-size: 60px; font-weight: bold; display: none !important; align-items: center; justify-content: center;">
                             </div>
                         </div>
                         <h5 id="modal-display-name" class="font-weight-bold mb-1"></h5>

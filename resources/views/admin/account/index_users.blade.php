@@ -167,42 +167,55 @@
             var button = $(event.relatedTarget);
             var modal = $(this);
 
-            // Lấy dữ liệu từ data attributes
             var name = button.data('name');
             var avatarUrl = button.data('avatar');
             var avatarText = button.data('avatar-text');
-            var role = button.data('role');
-            var status = button.data('status');
 
-            // Gán thông tin cơ bản
+            // Gán các thông tin văn bản cơ bản
             modal.find('#modal-display-name').text(name);
-            modal.find('#modal-account-id').text('#' + button.data('id'));
+            modal.find('#modal-account-id').text(button.data('id'));
             modal.find('#modal-account-email').text(button.data('email'));
             modal.find('#modal-account-phone').text(button.data('phone'));
             modal.find('#modal-account-bio').text(button.data('bio'));
             modal.find('#modal-account-created').text(button.data('created'));
 
-            // Xử lý Avatar (Sửa lỗi hiển thị cả hai)
-            if (avatarUrl && avatarUrl !== '') {
-                modal.find('#modal-avatar-img').attr('src', avatarUrl).show();
-                modal.find('#modal-avatar-text').hide();
+            // --- XỬ LÝ AVATAR RIÊNG BIỆT ---
+            var $imgObj = modal.find('#custom-avatar-image');
+            var $txtObj = modal.find('#custom-avatar-placeholder');
+
+            // Reset trạng thái trước khi kiểm tra (ẩn cả hai)
+            $imgObj.attr('style', 'display: none !important; width: 150px; height: 150px; object-fit: cover;');
+            $txtObj.attr('style',
+                'display: none !important; width: 150px; height: 150px; font-size: 60px; font-weight: bold; align-items: center; justify-content: center;'
+                );
+
+            // Kiểm tra logic hiển thị
+            if (avatarUrl && avatarUrl.trim() !== "" && !avatarUrl.endsWith('/storage/')) {
+                // Trường hợp: CÓ ẢNH
+                $imgObj.attr('src', avatarUrl);
+                $imgObj.css('cssText',
+                'display: block !important; width: 150px; height: 150px; object-fit: cover;');
             } else {
-                modal.find('#modal-avatar-img').hide();
-                modal.find('#modal-avatar-text').text(avatarText).css('display',
-                'flex'); // Dùng flex để căn giữa chữ
+                // Trường hợp: KHÔNG CÓ ẢNH (Dùng placeholder)
+                $txtObj.text(avatarText);
+                // Dùng display: flex để căn giữa chữ cái
+                $txtObj.css('cssText',
+                    'display: flex !important; width: 150px; height: 150px; font-size: 60px; font-weight: bold; align-items: center; justify-content: center;'
+                    );
             }
 
-            // Xử lý Badge Vai trò
+            // --- CÁC PHẦN KHÁC ---
+            var status = button.data('status');
+            var statusHtml = status ?
+                '<span class="badge badge-success">Hoạt động</span>' :
+                '<span class="badge badge-secondary">Bị khóa</span>';
+            modal.find('#modal-account-status').html(statusHtml);
+
+            var role = button.data('role');
             var roleBadge = (role === 'Quản trị viên') ?
                 '<span class="badge badge-danger">Quản trị viên</span>' :
                 '<span class="badge badge-info">Người dùng</span>';
             modal.find('#modal-account-role-badge').html(roleBadge);
-
-            // Xử lý Badge Trạng thái
-            var statusHtml = status ?
-                '<span class="badge badge-success px-3"><i class="fas fa-check-circle mr-1"></i>Hoạt động</span>' :
-                '<span class="badge badge-secondary px-3"><i class="fas fa-lock mr-1"></i>Bị khóa</span>';
-            modal.find('#modal-account-status').html(statusHtml);
         });
     </script>
 @endpush
