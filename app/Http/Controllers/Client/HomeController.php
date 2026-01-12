@@ -48,16 +48,6 @@ class HomeController extends Controller
         // 3. Top sản phẩm XEM NHIỀU (Top Selling)
         // Điều kiện: Phone is_active = true VÀ Variant status = 'còn_hàng'
         $topSellingPhones = Phone::where('is_active', true)
-            ->join('variants', 'phones.id', '=', 'variants.phone_id')
-            ->where('variants.status', 'còn_hàng') // Chỉ tính lượt view của các biến thể đang hoạt động
-            ->select('phones.*', DB::raw('SUM(variants.view) as total_views')) // Sử dụng cột 'view' như bạn mô tả
-            ->groupBy('phones.id', 'phones.category_id', 'phones.name', 'phones.slug', 'phones.short_description', 'phones.is_active', 'phones.main_image', 'phones.created_at', 'phones.updated_at', 'phones.deleted_at')
-            ->orderBy('total_views', 'asc')
-            ->with([
-                'variants' => function ($query) {
-                    $query->where('status', 'còn_hàng'); // Chỉ load các biến thể còn hàng
-                },
-            ])
             ->inRandomOrder()
             ->take(8)
             ->get();
@@ -114,5 +104,4 @@ class HomeController extends Controller
             ),
         );
     }
-
 }
