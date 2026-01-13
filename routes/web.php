@@ -18,6 +18,8 @@ use App\Http\Controllers\MessengerTrackingController;
 use App\Http\Controllers\SearchController;
 use Illuminate\Support\Facades\Route;
 
+
+
 /*
 |--------------------------------------------------------------------------
 | 1. GUEST ROUTES (Ai cũng có thể truy cập)
