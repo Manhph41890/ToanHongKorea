@@ -124,7 +124,7 @@
             <div class="st-card-body">
                 <div class="d-flex justify-content-between align-items-center">
                     <div>
-                        <div class="st-label">Đơn hàng mới</div>
+                        <div class="st-label">Tiêu đề</div>
                         <div class="st-value">5</div>
                     </div>
                     <i class="fas fa-shopping-cart st-icon-bg"></i>
