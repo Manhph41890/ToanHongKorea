@@ -8,9 +8,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>Toàn Hồng - @yield('title', 'Dashboard')</title>
     <title>@yield('title', 'ToanHong Admin')</title>
+    
 
     <!-- Custom fonts for this template-->
     <link href="{{ asset('css/admin.css') }}" rel="stylesheet">
@@ -25,6 +27,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <!-- Chart.js -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
 
     <script src="{{ asset('sb-admin/vendor/jquery/jquery.min.js') }}"></script>
     <script src="{{ asset('sb-admin/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
@@ -52,7 +55,7 @@
 
                 <div class="container-fluid">
 
-                    @yield('content') 
+                    @yield('content')
 
                 </div>
 

@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\AccountController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\ChatController;
 use App\Http\Controllers\Client\ContactController;
 use App\Http\Controllers\Client\FavoriteController;
 use App\Http\Controllers\Client\HomeController;
@@ -13,6 +14,7 @@ use App\Http\Controllers\Client\PackageClientController;
 use App\Http\Controllers\Client\PhoneClientController;
 use App\Http\Controllers\Client\ProfileController;
 use App\Http\Controllers\HTTPStatusController;
+use App\Http\Controllers\MessengerTrackingController;
 use App\Http\Controllers\SearchController;
 use Illuminate\Support\Facades\Route;
 
@@ -42,6 +44,8 @@ Route::get('toanhongkorea/403', [HTTPStatusController::class, 'http403'])->name(
 // Wishlist web ưu tiên không cần đăng nhập
 Route::get('/wishlist/list', [FavoriteController::class, 'index'])->name('wishlist.index');
 Route::post('/wishlist/toggle', [FavoriteController::class, 'toggle'])->name('wishlist.toggle');
+
+Route::post('/track-messenger-click', [MessengerTrackingController::class, 'trackClick'])->name('track.messenger');
 
 /*
 |--------------------------------------------------------------------------
@@ -73,8 +77,10 @@ Route::middleware(['auth'])->group(function () {
     // Profile cá nhân
     Route::get('/profile/user', [ProfileController::class, 'index'])->name('profile.index');
     Route::post('/profile/update', [ProfileController::class, 'update'])->name('profile.update');
+    Route::get('/chat/messages/{userId}', [ChatController::class, 'getMessages']);
+    Route::post('/chat/send', [ChatController::class, 'sendMessage']);
+    Route::post('/chat/read/{userId}', [ChatController::class, 'markAsRead']);
 });
-
 /*
 |--------------------------------------------------------------------------
 | 4. ADMIN & STAFF ROUTES (Roles 1 & 2)
@@ -103,8 +109,7 @@ Route::prefix('admin')
         Route::delete('phones/{id}/force-delete', [PhoneController::class, 'forceDelete'])->name('phones.forceDelete');
         Route::get('phones/get-variant-form-fields', [PhoneController::class, 'getVariantFormFields'])->name('phones.getVariantFormFields');
         Route::patch('phones/{phone}/change-status', [PhoneController::class, 'changeStatus'])->name('phones.changeStatus');
-        Route::patch('/phones/{phone}/toggle-featured', [PhoneController::class, 'toggleFeatured'])
-        ->name('phones.toggle-featured');
+        Route::patch('/phones/{phone}/toggle-featured', [PhoneController::class, 'toggleFeatured'])->name('phones.toggle-featured');
         Route::resource('phones', PhoneController::class);
 
         // --- Quản lý Gói cước (Packages) ---

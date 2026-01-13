@@ -6,8 +6,22 @@
 
 import axios from 'axios';
 window.axios = axios;
-
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
+
+import Echo from 'laravel-echo';
+import Pusher from 'pusher-js';
+
+
+window.Pusher = Pusher;
+
+window.Echo = new Echo({
+    broadcaster: 'pusher',
+    key: import.meta.env.VITE_PUSHER_APP_KEY,
+    cluster: import.meta.env.VITE_PUSHER_APP_CLUSTER,
+    forceTLS: true,
+    // Thêm dòng này để đảm bảo nó gửi auth về đúng IP máy chủ của bạn
+    authEndpoint: 'http://192.168.1.95:8000/broadcasting/auth',
+});
 
 /**
  * Echo exposes an expressive API for subscribing to channels and listening
