@@ -8,6 +8,7 @@ use App\Models\Package;
 use App\Models\Phone;
 use App\Models\User;
 use App\Models\Variant;
+use App\Models\VisitorStatistic;
 use Illuminate\Http\Request;
 
 class DashboardController extends Controller
@@ -70,11 +71,19 @@ class DashboardController extends Controller
         $totalProductViews = Phone::sum('views_count');
 
         // CỘT 5: Đơn hàng mới (Dữ liệu thêm cho "Xịn")
-        // Giả sử bạn có model Order
+
 
         // CỘT 6: Tổng lượt truy cập Website
-        // (Nếu bạn chưa có bảng theo dõi traffic, có thể dùng tạm số liệu giả lập hoặc query từ bảng lưu log truy cập)
-        // $webVisits = \DB::table('s_visits')->count(); // Giả định bạn có bảng lưu visit
+        // Lưu ý: Vì bảng visitor_statistics dùng cột 'date', ta filter theo cột đó thay vì 'created_at'
+        $webStats = VisitorStatistic::whereBetween('date', [$startDate->format('Y-m-d'), $endDate->format('Y-m-d')])->get();
+
+        $mobileHits = $webStats->where('device_type', 'mobile')->sum('hits');
+        $desktopHits = $webStats->where('device_type', 'desktop')->sum('hits');
+        $webVisits = $mobileHits + $desktopHits;
+
+        // Tính phần trăm để hiển thị
+        $mobileRate = $webVisits > 0 ? round(($mobileHits / $webVisits) * 100) : 0;
+        $desktopRate = $webVisits > 0 ? round(($desktopHits / $webVisits) * 100) : 0;
 
         // CỘT 7: Sản phẩm yêu thích (Engagement)
         $totalFavorites = \DB::table('favorites')->count();
@@ -118,7 +127,13 @@ class DashboardController extends Controller
         foreach ($carriers as $carrier) {
             $carrierData[] = $applyFilter(Package::where('carrier', $carrier))->count();
         }
-
-        return view('admin.general.dashboard', compact('packagesCount', 'usersCount', 'employeesCount', 'totalViews', 'topPhones', 'catNames', 'catCounts', 'carrierData', 'categoriesLevel2', 'employees', 'lowStockPhones', 'totalVariants', 'totalStock', 'totalProductViews', 'totalFavorites', 'outOfStockCount'));
+        return view('admin.general.dashboard',
+         compact(
+    'packagesCount', 'usersCount', 'employeesCount', 'totalViews', 'topPhones', 
+            'catNames', 'catCounts', 'carrierData', 'categoriesLevel2', 'employees', 
+            'lowStockPhones', 'totalVariants', 'totalStock', 'totalProductViews', 
+            'totalFavorites', 'outOfStockCount',
+            'webVisits', 'mobileHits', 'desktopHits', 'mobileRate', 'desktopRate'
+        ));
     }
 }

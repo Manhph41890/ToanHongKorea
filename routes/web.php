@@ -13,6 +13,7 @@ use App\Http\Controllers\Client\PackageClientController;
 use App\Http\Controllers\Client\PhoneClientController;
 use App\Http\Controllers\Client\ProfileController;
 use App\Http\Controllers\HTTPStatusController;
+use App\Http\Controllers\MessengerTrackingController;
 use App\Http\Controllers\SearchController;
 use Illuminate\Support\Facades\Route;
 
@@ -42,6 +43,8 @@ Route::get('toanhongkorea/403', [HTTPStatusController::class, 'http403'])->name(
 // Wishlist web ưu tiên không cần đăng nhập
 Route::get('/wishlist/list', [FavoriteController::class, 'index'])->name('wishlist.index');
 Route::post('/wishlist/toggle', [FavoriteController::class, 'toggle'])->name('wishlist.toggle');
+
+Route::post('/track-messenger-click', [MessengerTrackingController::class, 'trackClick'])->name('track.messenger');
 
 /*
 |--------------------------------------------------------------------------

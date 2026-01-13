@@ -64,8 +64,8 @@
                             @forelse ($employees as $emp)
                                 <div class="list-group-item border-0 d-flex align-items-center py-3">
                                     <div class="position-relative mr-3">
-                                        <img src="https://ui-avatars.com/api/?name={{ urlencode($emp->name) }}&background=random"
-                                            class="rounded-circle" width="40">
+                                        <img src="{{ Storage::url($emp->avatar) }}"
+                                            class="rounded-circle" width="40" height="40">
                                         <!-- Chấm xanh Online -->
                                         <span class="position-absolute border border-white rounded-circle bg-success"
                                             style="bottom: 0; right: 0; width: 12px; height: 12px;"
