@@ -23,6 +23,7 @@ use Illuminate\Support\Facades\Route;
 | 1. GUEST ROUTES (Ai cũng có thể truy cập)
 |--------------------------------------------------------------------------
 */
+
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/search/products', [SearchController::class, 'index'])->name('search');
 
