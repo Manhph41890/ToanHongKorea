@@ -20,7 +20,7 @@
                         @foreach ($categories_iphone as $cat)
                             <a href="{{ route('category.show', $cat->slug) }}"
                                 class="tab-item {{ request()->is('category/' . $cat->slug) ? 'active' : '' }}"
-                                data-filter="cat-{{ $cat->id }}">
+                                data-filter="cat-{{ $cat->id }}" title="Danh mục {{ $cat->name }}">
                                 {{ $cat->name }}
                             </a>
                         @endforeach
