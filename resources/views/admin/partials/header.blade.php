@@ -49,7 +49,7 @@
             <div class="adm-hb-user-trigger adm-hb-trigger" id="userTrigger">
                 <div class="adm-hb-user-info d-none d-lg-block">
                     <span class="adm-hb-user-name">{{ Auth::user()->name }}</span>
-                    <span class="adm-hb-user-role">Quản trị viên</span>
+                    <span class="adm-hb-user-role">{{ Auth::user()->role->name }}</span>
                 </div>
                 <div class="adm-hb-user-avatar">
                     @if (Auth::user()->avatar)
