@@ -57,7 +57,7 @@
                         <div class="df-icon"><i class="fa-solid fa-phone-volume"></i></div>
                         <div class="df-text">
                             <strong>Hotline 24/7:</strong>
-                            <p>010 2828 8333 — 010 8282 6886</p>
+                            <p>01065652999 — 01025282999</p>
                         </div>
                     </div>
                     <div class="df-contact-item">

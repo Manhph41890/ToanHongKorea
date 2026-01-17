@@ -82,7 +82,7 @@
                         <div class="m-icon"><i class="fa-solid fa-phone"></i></div>
                         <div class="m-text">
                             <strong>Hotline:</strong>
-                            <p>010 2828 8333 - 010 8282 6868</p>
+                            <p>01065652999 - 010 8282 6868</p>
                         </div><br>
                         <div class="info-item">
                             <i class="fa-brands fa-facebook"></i>

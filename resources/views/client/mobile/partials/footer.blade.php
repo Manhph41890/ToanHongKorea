@@ -52,17 +52,17 @@
 
             <div class="mf-contact-row">
                 <i class="fa-solid fa-location-dot"></i>
-                <span>Seoul, Republic of Korea</span>
+                <span>부산시 사하구 장림시장4길 19번호 1층</span>
             </div>
 
             <div class="mf-phone-grid">
                 <a href="tel:01028288333" class="mf-phone-btn">
                     <i class="fa-solid fa-phone"></i>
-                    <span>010 2828 8333</span>
+                    <span>01065652999</span>
                 </a>
                 <a href="tel:01082826886" class="mf-phone-btn">
                     <i class="fa-solid fa-phone"></i>
-                    <span>010 8282 6886</span>
+                    <span>01025282999</span>
                 </a>
             </div>
 
